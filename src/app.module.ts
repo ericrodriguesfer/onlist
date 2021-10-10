@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: process.env.TYPEORM_CONNECTION,
+      type: process.env.TYPEORM_CONNECTION as any,
       host: process.env.TYPEORM_HOST,
       port: parseInt(process.env.TYPEORM_PORT),
       database: process.env.TYPEORM_DATABASE,
