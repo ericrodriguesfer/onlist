@@ -1,10 +1,25 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: process.env.TYPEORM_CONNECTION,
+      host: process.env.TYPEORM_HOST,
+      port: parseInt(process.env.TYPEORM_PORT),
+      database: process.env.TYPEORM_DATABASE,
+      username: process.env.TYPEORM_USERNAME,
+      password: process.env.TYPEORM_PASSWORD,
+      entities: [],
+      retryDelay: 3000,
+      retryAttempts: 10,
+      synchronize: true,
+    }),
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
