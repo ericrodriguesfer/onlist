@@ -8,7 +8,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=onlistdatabase
+    volumes:
+      - ./postgres_data/data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
-    volumes:
-      - ./postgres_data:/var/lib/postgresql
+    restart: unless-stopped
