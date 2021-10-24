@@ -21,10 +21,16 @@
 4. ![Use case Maps](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/use-case/UseCase%20Mapas.jpg)
     * [Acesse o diagrama](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/use-case/UseCase%20Mapas.jpg)
 
+5. ![Use case Manager Viewer](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/use-case/UseCase%20Gerencia%20Viewer.jpg)
+    * [Acesse o diagrama](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/use-case/UseCase%20Gerencia%20Viewer.jpg)
+
+6. ![Use case Manage My Lists Viewer](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/use-case/UseCase%20Gerencia%20de%20Viewer%20em%20Listas.jpg)
+    * [Acesse o diagrama](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/use-case/UseCase%20Gerencia%20de%20Viewer%20em%20Listas.jpg)
+
 ## Diagramas de Classes e Abstração do Banco de Dados
 
 ![Class Diagram and MER](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/class/Class%20Onlist.jpg)
-    * [Acesse o diagrama](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/class/Class%20Onlist.jpg)
+*   [Acesse o diagrama](https://github.com/OnList-Group-Enterprise/documentation/blob/main/diagrams/class/Class%20Onlist.jpg)
 
 ### Caso queira entender mais sobre o projeto
 
