@@ -9,7 +9,6 @@ export class UsersDTO {
   @IsEmail()
   email: string;
 
-  @IsString({ message: 'este campo precisa ser uma string' })
   @IsNotEmpty({ message: 'este campo não pode ser nulo' })
   password: string;
 
