@@ -7,6 +7,9 @@ interface TokenPayload {
   iat: number;
   exp: number;
   sub: string;
+  id: string;
+  email: string;
+  name: string;
 }
 
 export default function ensureAuthenticatedMiddleware(
@@ -24,10 +27,12 @@ export default function ensureAuthenticatedMiddleware(
 
   try {
     const decoded = verify(token, auth.secret);
-    const { sub } = decoded as TokenPayload;
+    const { id, email, name } = decoded as TokenPayload;
 
     req.user = {
-      id: sub,
+      id,
+      email,
+      name,
     };
 
     return next();
