@@ -20,7 +20,7 @@ import { UsersModule } from './modules/users/users.module';
       retryAttempts: 10,
       synchronize: true,
     }),
-    UsersModule
+    UsersModule,
   ],
   controllers: [],
   providers: [],
