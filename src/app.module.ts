@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Address } from './modules/marketplace/infra/typeorm/entities/Address';
 import { Marketplace } from './modules/marketplace/infra/typeorm/entities/Marketplace';
 import { MarketplaceModule } from './modules/marketplace/marketplace.module';
+import { Products } from './modules/products/infra/typeorm/entities/Products';
+import { ProductsModule } from './modules/products/products.module';
 import { Users } from './modules/users/infra/typeorm/entities/Users';
 import { UsersModule } from './modules/users/users.module';
 
@@ -18,13 +20,14 @@ import { UsersModule } from './modules/users/users.module';
       database: process.env.TYPEORM_DATABASE,
       username: process.env.TYPEORM_USERNAME,
       password: process.env.TYPEORM_PASSWORD,
-      entities: [Users, Marketplace, Address],
+      entities: [Users, Marketplace, Address,Products],
       retryDelay: 3000,
       retryAttempts: 10,
       synchronize: true,
     }),
     UsersModule,
-    MarketplaceModule
+    MarketplaceModule,
+    ProductsModule
   ],
   controllers: [],
   providers: [],
