@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">OnList</string>
     <string name="titleMainActivity">Olá OnList</string>
+    <string name="textTitleLoginActivity">Realize seu login na OnList</string>
+    <string name="textSubTitleLoginActivity">Seja bem vindo ao OnList, descomplique sua vida e torne suas listas de compras mais divertidas.</string>
 </resources>
