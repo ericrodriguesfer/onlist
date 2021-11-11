@@ -1,5 +1,11 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import ensureAuthenticatedMiddleware from '../../shared/ensureAuthenticatedMiddleware';
 import { Products } from '../products/infra/typeorm/entities/Products';
 import { Users } from '../users/infra/typeorm/entities/Users';
 import { Lists } from './infra/typeorm/entities/Lists';
@@ -11,4 +17,10 @@ import { CreateListsService } from './services/create-lists.service';
   controllers: [ListsController],
   providers: [CreateListsService],
 })
-export class ListsModule {}
+export class ListsModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ensureAuthenticatedMiddleware)
+      .forRoutes({ path: '/lists', method: RequestMethod.POST });
+  }
+}

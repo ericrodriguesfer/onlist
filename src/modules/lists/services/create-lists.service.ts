@@ -30,9 +30,16 @@ export class CreateListsService {
           'Não foi possível encontrar o usuário, id inválido',
         );
 
+      console.log('ate aqui passou', user);
+      console.log('como estao vindo os id de produtos', products_id);
+
+      const teste = products_id.toString();
+
       const products = await this.productsRepository.find({
-        where: { id: products_id },
+        where: { id: teste },
       });
+
+      console.log('erro no products', products);
 
       let count = 0;
 
