@@ -3,6 +3,8 @@ import {
   ClassSerializerInterceptor,
   Controller,
   Post,
+  Put,
+  Request,
   UseInterceptors,
   UsePipes,
   ValidationPipe,
@@ -10,10 +12,21 @@ import {
 import { CreateUserService } from '../../../services/create-user.service';
 import { Users } from '../entities/Users';
 import { UsersDTO } from '../../../dtos/UsersDTO';
+import { ChangeDataUserService } from '../../../services/change-data-user.service';
+import { IPutUserDTO } from '../../../dtos/IPutUserDTO';
+
+interface IRequestUser {
+  user: {
+    id: string;
+  };
+}
 
 @Controller('users')
 export class UsersController {
-  constructor(private createUserService: CreateUserService) {}
+  constructor(
+    private createUserService: CreateUserService,
+    private changeDataUserService: ChangeDataUserService,
+  ) {}
 
   @UsePipes(ValidationPipe)
   @UseInterceptors(ClassSerializerInterceptor)
@@ -22,5 +35,22 @@ export class UsersController {
     @Body() { email, name, password, telephone }: UsersDTO,
   ): Promise<Users> {
     return this.createUserService.execute({ email, name, password, telephone });
+  }
+
+  @UseInterceptors(ClassSerializerInterceptor)
+  @UsePipes(ValidationPipe)
+  @Put()
+  async putInfoUser(
+    @Request() req: IRequestUser,
+    @Body() { name, email, password, telephone }: IPutUserDTO,
+  ): Promise<Users> {
+    console.log('id chegando?', req.user.id);
+    return this.changeDataUserService.execute({
+      user_id: req.user.id,
+      name,
+      email,
+      password,
+      telephone,
+    });
   }
 }
