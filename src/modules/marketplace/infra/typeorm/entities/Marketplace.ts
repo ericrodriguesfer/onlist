@@ -4,7 +4,7 @@ import {
   PrimaryGeneratedColumn,
   JoinColumn,
   OneToOne,
-  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 import { Users } from '../../../../users/infra/typeorm/entities/Users';
 import { Address } from './Address';
@@ -36,7 +36,7 @@ export class Marketplace {
   @Column({ default: null })
   user_id: string;
 
-  @OneToMany(() => Users, (users) => users.id)
+  @ManyToOne(() => Users, (users) => users.id)
   @JoinColumn({ name: 'user_id' })
   user: Users;
 }
