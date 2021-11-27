@@ -1,4 +1,4 @@
-import { IsEmail, IsString, IsNotEmpty, Max, Length } from 'class-validator';
+import { IsEmail, IsString, IsNotEmpty, Length } from 'class-validator';
 
 export class UsersDTO {
   @IsString({ message: 'este campo precisa ser uma string' })
