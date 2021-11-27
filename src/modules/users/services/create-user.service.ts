@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from '../infra/typeorm/entities/Users';
@@ -16,6 +20,7 @@ export class CreateUserService {
     email,
     password,
     telephone,
+    initials,
   }: UsersDTO): Promise<Users> {
     try {
       const user = await this.usersRepository.findOne({
@@ -35,13 +40,17 @@ export class CreateUserService {
         email,
         password: hashedPass,
         telephone,
+        initials,
       });
 
       await this.usersRepository.save(newUser);
 
       return newUser;
     } catch (err) {
-      throw err;
+      if (err) throw err;
+      throw new InternalServerErrorException(
+        'Desculpa, houve um erro em processar essa solicitação',
+      );
     }
   }
 }

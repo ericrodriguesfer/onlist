@@ -19,6 +19,6 @@ export class Users {
   @Column({ default: null })
   telephone: string;
 
-  @Column({ default: null })
+  @Column()
   initials: string;
 }

@@ -32,9 +32,15 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   async createUser(
-    @Body() { email, name, password, telephone }: UsersDTO,
+    @Body() { email, name, password, telephone, initials }: UsersDTO,
   ): Promise<Users> {
-    return this.createUserService.execute({ email, name, password, telephone });
+    return this.createUserService.execute({
+      email,
+      name,
+      password,
+      telephone,
+      initials,
+    });
   }
 
   @UseInterceptors(ClassSerializerInterceptor)
