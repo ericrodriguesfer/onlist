@@ -48,15 +48,15 @@ export class UsersController {
   @Put()
   async putInfoUser(
     @Request() req: IRequestUser,
-    @Body() { name, email, password, telephone }: IPutUserDTO,
+    @Body() { name, email, password, telephone, initials }: IPutUserDTO,
   ): Promise<Users> {
-    console.log('id chegando?', req.user.id);
     return this.changeDataUserService.execute({
       user_id: req.user.id,
       name,
       email,
       password,
       telephone,
+      initials,
     });
   }
 }
