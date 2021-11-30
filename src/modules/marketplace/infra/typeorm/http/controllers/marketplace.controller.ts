@@ -1,31 +1,22 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   Param,
   Post,
   Put,
   Request,
+  UseInterceptors,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ICreateMarketplace } from '../../../../dtos/ICreateMarketplace';
+import { IPutMarketplace } from '../../../../dtos/IPutMarketplace';
 import { ChangeDataMarketplaceService } from '../../../../services/change-data-marketplace.service';
 import { CreateMarketplaceService } from '../../../../services/create-marketplace.service';
 import { ListMarketRelatedUserService } from '../../../../services/list-market-related-user.service';
 import { Marketplace } from '../../entities/Marketplace';
-
-interface IPutMarketplace {
-  user_id: string;
-  marketplace_id: string;
-  name?: string;
-  cep?: string;
-  city?: string;
-  district?: string;
-  latitude?: number;
-  longitude?: number;
-  number?: string;
-  state?: string;
-  street?: string;
-}
 
 interface IRequestUser {
   user: {
@@ -41,6 +32,8 @@ export class MarketplaceController {
     private changeDataMarketPlaceService: ChangeDataMarketplaceService,
   ) {}
 
+  @UsePipes(ValidationPipe)
+  @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   async createMarketplace(
     @Request() req: IRequestUser,
@@ -58,7 +51,6 @@ export class MarketplaceController {
       street,
     }: ICreateMarketplace,
   ): Promise<Marketplace> {
-    console.log('user id reques', req.user.id);
     return this.createMarketplaceService.execute({
       cep,
       city,
@@ -81,7 +73,9 @@ export class MarketplaceController {
     return this.listMarketplaceUserService.execute({ user_id: req.user.id });
   }
 
-  @Put('/put/:id')
+  @UsePipes(ValidationPipe)
+  @UseInterceptors(ClassSerializerInterceptor)
+  @Put('/:id')
   async changeDataMarketplace(
     @Request() req: IRequestUser,
     @Param('id') marketplace_id: string,
@@ -96,6 +90,7 @@ export class MarketplaceController {
       number,
       state,
       street,
+      pathImage,
     }: IPutMarketplace,
   ): Promise<Marketplace> {
     return this.changeDataMarketPlaceService.execute({
@@ -110,6 +105,7 @@ export class MarketplaceController {
       number,
       state,
       street,
+      pathImage,
     });
   }
 }

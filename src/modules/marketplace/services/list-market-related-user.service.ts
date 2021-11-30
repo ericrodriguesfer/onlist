@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from '../../users/infra/typeorm/entities/Users';
@@ -22,8 +26,9 @@ export class ListMarketRelatedUserService {
         where: { id: user_id },
       });
 
-      if (!user)
+      if (!user) {
         throw new NotFoundException('Usuário não encontrado, id inválido');
+      }
 
       const marketplaceList = await this.marketplaceRepository.find({
         relations: ['user'],
@@ -31,7 +36,10 @@ export class ListMarketRelatedUserService {
 
       return marketplaceList;
     } catch (err) {
-      throw err;
+      if (err) throw err;
+      throw new InternalServerErrorException(
+        'Desculpa, houve um erro em processar essa solicitação',
+      );
     }
   }
 }
