@@ -30,12 +30,11 @@ export class ListsController {
   @Post()
   async createList(
     @Request() req: IRequestUser,
-    @Body() { name, products_id }: ICreateLists,
+    @Body() { name, marketplace_id }: ICreateLists,
   ): Promise<any> {
-    console.log('id do user', req.user.id);
     return this.createListService.execute({
       name,
-      products_id,
+      marketplace_id,
       user_id: req.user.id,
     });
   }

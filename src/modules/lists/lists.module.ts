@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import ensureAuthenticatedMiddleware from '../../shared/ensureAuthenticatedMiddleware';
+import { Marketplace } from '../marketplace/infra/typeorm/entities/Marketplace';
 import { Products } from '../products/infra/typeorm/entities/Products';
 import { Users } from '../users/infra/typeorm/entities/Users';
 import { Lists } from './infra/typeorm/entities/Lists';
@@ -15,7 +16,7 @@ import { DeleteListRelatedUserService } from './services/delete-list-related-use
 import { GetListRelatedUserService } from './services/get-list-related-user.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Users, Products, Lists])],
+  imports: [TypeOrmModule.forFeature([Users, Products, Lists, Marketplace])],
   controllers: [ListsController],
   providers: [
     CreateListsService,
