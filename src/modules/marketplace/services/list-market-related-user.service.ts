@@ -6,6 +6,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from '../../users/infra/typeorm/entities/Users';
+import { Address } from '../infra/typeorm/entities/Address';
 import { Marketplace } from '../infra/typeorm/entities/Marketplace';
 
 interface IListRelatedUserMarket {
@@ -18,6 +19,7 @@ export class ListMarketRelatedUserService {
     @InjectRepository(Users) private usersRepository: Repository<Users>,
     @InjectRepository(Marketplace)
     private marketplaceRepository: Repository<Marketplace>,
+    @InjectRepository(Address) private addressRepository: Repository<Address>,
   ) {}
 
   async execute({ user_id }: IListRelatedUserMarket): Promise<Marketplace[]> {
@@ -31,7 +33,8 @@ export class ListMarketRelatedUserService {
       }
 
       const marketplaceList = await this.marketplaceRepository.find({
-        relations: ['user'],
+        where: { user_id: user.id },
+        relations: ['address'],
       });
 
       return marketplaceList;
