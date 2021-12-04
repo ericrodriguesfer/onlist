@@ -38,7 +38,6 @@ export class ProductsController {
     @Request() req: IRequestUser,
     @Body() { name, price }: IPutProducts,
   ): Promise<Products> {
-    console.log('id do produto', product_id);
     return this.changeDataProductsService.execute({
       product_id,
       name,

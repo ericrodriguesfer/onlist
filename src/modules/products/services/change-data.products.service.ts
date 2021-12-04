@@ -1,9 +1,11 @@
 import {
   Injectable,
+  InternalServerErrorException,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Marketplace } from 'src/modules/marketplace/infra/typeorm/entities/Marketplace';
 import { Repository } from 'typeorm';
 import { Users } from '../../users/infra/typeorm/entities/Users';
 import { Products } from '../infra/typeorm/entities/Products';
@@ -21,6 +23,8 @@ export class ChangeDataProducts {
     @InjectRepository(Products)
     private productsRepository: Repository<Products>,
     @InjectRepository(Users) private usersRepository: Repository<Users>,
+    @InjectRepository(Marketplace)
+    private marketplaceRepository: Repository<Marketplace>,
   ) {}
 
   async execute({
@@ -34,23 +38,49 @@ export class ChangeDataProducts {
         where: { id: user_id },
       });
 
-      if (!user)
+      if (!user) {
         throw new UnauthorizedException('Usuário não autorizado, id inválido');
+      }
 
       const product = await this.productsRepository.findOne({
         where: { id: product_id },
       });
 
-      if (!product) throw new NotFoundException('Produto não encontrado');
+      if (!product) {
+        throw new NotFoundException('Produto não encontrado');
+      }
 
-      product.name = name;
+      const marketProduct = await this.marketplaceRepository.findOne({
+        where: { id: product.marketplace_id },
+      });
+
+      if (!marketProduct) {
+        throw new NotFoundException('Mercado deste produto não foi encontrado');
+      }
+
+      if (name && name != product.name) {
+        const existsOtherProductWithRepassedName =
+          await this.productsRepository.findOne({
+            where: { name: name },
+          });
+
+        if (existsOtherProductWithRepassedName) {
+          throw new UnauthorizedException('Já existe um produto com esse nome');
+        }
+
+        product.name = name;
+      }
+
       product.price = price;
 
       await this.productsRepository.save(product);
 
       return product;
     } catch (err) {
-      throw err;
+      if (err) throw err;
+      throw new InternalServerErrorException(
+        'Desculpa, houve um erro em processar essa solicitação',
+      );
     }
   }
 }
