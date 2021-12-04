@@ -37,5 +37,5 @@ export class Lists {
 
   @JoinColumn({ name: 'marketplace_id' })
   @ManyToOne(() => Marketplace, (markeplace) => markeplace.id)
-  markeplace: Marketplace;
+  marketplace: Marketplace;
 }
