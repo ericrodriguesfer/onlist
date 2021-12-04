@@ -1,5 +1,6 @@
 import {
   Injectable,
+  InternalServerErrorException,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -54,7 +55,10 @@ export class CreateProductsService {
 
       return newProduct;
     } catch (err) {
-      throw err;
+      if (err) throw err;
+      throw new InternalServerErrorException(
+        'Desculpa, houve um erro em processar essa solicitação',
+      );
     }
   }
 }
