@@ -21,7 +21,7 @@ export class Products {
   @Column({ default: null })
   marketplace_id: string;
 
-  @JoinColumn()
-  @ManyToOne(() => Marketplace, (marketplace) => marketplace.id)
+  @ManyToOne(() => Marketplace)
+  @JoinColumn({ name: 'marketplace_id' })
   marketplace: Marketplace;
 }
