@@ -45,8 +45,6 @@ export class ProductsController {
     return this.listAllProductsByMarketplace.execute({ marketplace_id });
   }
 
-  @UsePipes(ValidationPipe)
-  @UseInterceptors(ClassSerializerInterceptor)
   @Post('/:id')
   async createProducts(
     @Param('id') marketplace_id: string,
