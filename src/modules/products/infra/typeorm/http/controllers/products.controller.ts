@@ -1,15 +1,11 @@
 import {
   Body,
-  ClassSerializerInterceptor,
   Controller,
   Get,
   Param,
   Post,
   Put,
   Request,
-  UseInterceptors,
-  UsePipes,
-  ValidationPipe,
 } from '@nestjs/common';
 import { ICreateProducts } from '../../../../dtos/ICreateProducts';
 import { ChangeDataProducts } from '../../../../services/change-data.products.service';
