@@ -68,7 +68,10 @@ export class DeleteProductInListService {
         });
 
         list.quantity_products--;
-        list.total_price -= product.price;
+        list.total_price =
+          list.total_price - product.price <= 0
+            ? 0
+            : list.total_price - product.price;
 
         await this.listsRepository.save(list);
 

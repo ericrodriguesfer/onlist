@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Marketplace } from 'src/modules/marketplace/infra/typeorm/entities/Marketplace';
 import { Products } from 'src/modules/products/infra/typeorm/entities/Products';
 import { Users } from 'src/modules/users/infra/typeorm/entities/Users';
 import { Repository } from 'typeorm';
@@ -51,7 +52,7 @@ export class InsertProductInListService {
       }
 
       const product = await this.productsRepository.findOne({
-        where: { id: product_id },
+        where: { id: product_id, marketplace_id: list.marketplace_id },
       });
 
       if (!product) {
