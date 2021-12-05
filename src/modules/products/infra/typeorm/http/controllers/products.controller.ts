@@ -1,7 +1,16 @@
-import { Body, Controller, Param, Post, Put, Request } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  Request,
+} from '@nestjs/common';
 import { ICreateProducts } from '../../../../dtos/ICreateProducts';
 import { ChangeDataProducts } from '../../../../services/change-data.products.service';
 import { CreateProductsService } from '../../../../services/create-products.service';
+import { ListAllProductsMarketplaceService } from '../../../../services/list-all-products-marketplace.service';
 import { Products } from '../../entities/Products';
 
 interface IRequestUser {
@@ -22,7 +31,15 @@ export class ProductsController {
   constructor(
     private createProductsService: CreateProductsService,
     private changeDataProductsService: ChangeDataProducts,
+    private listAllProductsByMarketplace: ListAllProductsMarketplaceService,
   ) {}
+
+  @Get('/:id')
+  async getProductsByMarketplace(
+    @Param('id') marketplace_id: string,
+  ): Promise<Products[]> {
+    return this.listAllProductsByMarketplace.execute({ marketplace_id });
+  }
 
   @Post('/:id')
   async createProducts(
@@ -38,7 +55,6 @@ export class ProductsController {
     @Request() req: IRequestUser,
     @Body() { name, price }: IPutProducts,
   ): Promise<Products> {
-    console.log('id do produto', product_id);
     return this.changeDataProductsService.execute({
       product_id,
       name,

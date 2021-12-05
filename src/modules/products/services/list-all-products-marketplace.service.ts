@@ -2,16 +2,18 @@ import {
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Marketplace } from 'src/modules/marketplace/infra/typeorm/entities/Marketplace';
 import { Repository } from 'typeorm';
-import { Marketplace } from '../../marketplace/infra/typeorm/entities/Marketplace';
-import { ICreateProducts } from '../dtos/ICreateProducts';
 import { Products } from '../infra/typeorm/entities/Products';
 
+interface IListAllProductsByMarketplace {
+  marketplace_id: string;
+}
+
 @Injectable()
-export class CreateProductsService {
+export class ListAllProductsMarketplaceService {
   constructor(
     @InjectRepository(Products)
     private productsRepository: Repository<Products>,
@@ -20,40 +22,22 @@ export class CreateProductsService {
   ) {}
 
   async execute({
-    name,
-    price,
     marketplace_id,
-  }: ICreateProducts): Promise<Products> {
+  }: IListAllProductsByMarketplace): Promise<Products[]> {
     try {
-      const product = await this.productsRepository.findOne({
-        where: { name },
-      });
-
-      if (product) {
-        throw new UnauthorizedException(
-          'Não é possível cadastrar um produto com o mesmo nome',
-        );
-      }
-
       const marketplace = await this.marketplaceRepository.findOne({
         where: { id: marketplace_id },
       });
 
       if (!marketplace) {
-        throw new NotFoundException(
-          'Não achamos o id do mercado para criar o produto',
-        );
+        throw new NotFoundException('Mercado não encontrado');
       }
 
-      const newProduct = this.productsRepository.create({
-        name,
-        price,
-        marketplace_id,
+      const products = await this.productsRepository.find({
+        where: { marketplace_id: marketplace.id },
       });
 
-      await this.productsRepository.save(newProduct);
-
-      return newProduct;
+      return products;
     } catch (err) {
       if (err) throw err;
       throw new InternalServerErrorException(

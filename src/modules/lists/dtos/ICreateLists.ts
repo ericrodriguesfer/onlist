@@ -11,5 +11,5 @@ export class ICreateLists {
 
   @IsNotEmpty({ message: 'valor não pode ser nulo - products_id' })
   @IsString({ message: 'o valor é uma string' })
-  products_id: string[];
+  marketplace_id: string;
 }

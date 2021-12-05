@@ -1,15 +1,13 @@
-import { IsInt, IsString, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, Length } from 'class-validator';
 
 export class ICreateMarketplace {
   @IsString({ message: 'esse campo é uma string(texto)' })
   @IsNotEmpty({ message: 'o nome não pode ser nulo' })
   name: string;
 
-  @IsInt()
   @IsNotEmpty({ message: 'a latitude não pode ser nula' })
   latitude: number;
 
-  @IsInt()
   @IsNotEmpty({ message: 'a longitude não pode ser nula' })
   longitude: number;
 
@@ -27,6 +25,7 @@ export class ICreateMarketplace {
 
   @IsString({ message: 'esse campo é uma string(texto)' })
   @IsNotEmpty({ message: 'o cep não pode ser nulo' })
+  @Length(8, 8)
   cep: string;
 
   @IsString({ message: 'esse campo é uma string(texto)' })
@@ -42,6 +41,6 @@ export class ICreateMarketplace {
   district: string;
 
   @IsString({ message: 'esse campo é uma string(texto)' })
-  @IsNotEmpty({ message: 'o user_id não pode ser nulo' })
+  @IsOptional()
   user_id: string;
 }

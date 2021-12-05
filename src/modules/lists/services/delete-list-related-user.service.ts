@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from '../../users/infra/typeorm/entities/Users';
@@ -22,17 +26,19 @@ export class DeleteListRelatedUserService {
         where: { id: user_id },
       });
 
-      if (!user)
+      if (!user) {
         throw new UnauthorizedException('Usuário não encontrado, id inválido');
+      }
 
       const list = await this.listsRepository.findOne({
         where: { id: list_id },
       });
 
-      if (!list)
+      if (!list) {
         throw new UnauthorizedException(
           'Não é possível deletar a lista, id inválido',
         );
+      }
 
       const response = await this.listsRepository.delete(list.id);
 
@@ -46,7 +52,10 @@ export class DeleteListRelatedUserService {
         };
       }
     } catch (err) {
-      throw err;
+      if (err) throw err;
+      throw new InternalServerErrorException(
+        'Desculpa, houve um erro em processar essa solicitação',
+      );
     }
   }
 }

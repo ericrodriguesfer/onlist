@@ -30,7 +30,7 @@ export class MarketplaceModule implements NestModule {
       .forRoutes(
         { path: 'marketplace', method: RequestMethod.POST },
         { path: 'marketplace/list', method: RequestMethod.GET },
-        { path: 'marketplace/put/:id', method: RequestMethod.PUT },
+        { path: 'marketplace/:id', method: RequestMethod.PUT },
       );
   }
 }
