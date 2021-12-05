@@ -45,7 +45,7 @@ export class CreateListsService {
       }
 
       const marketplace = await this.marketplaceRepository.findOne({
-        where: { id: marketplace_id },
+        where: { id: marketplace_id, user_id: user.id },
       });
 
       if (!marketplace) {
