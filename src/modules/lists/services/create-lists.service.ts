@@ -24,6 +24,7 @@ export class CreateListsService {
     name,
     marketplace_id,
     user_id,
+    viewer_id,
   }: ICreateLists): Promise<Lists> {
     try {
       const existsListByName = await this.listsRepository.findOne({
@@ -52,17 +53,46 @@ export class CreateListsService {
         throw new UnauthorizedException('O mercado não foi encontrado');
       }
 
-      const list = this.listsRepository.create({
-        name,
-        user_id,
-        marketplace_id,
-        quantity_products: 0,
-        total_price: 0,
-      });
+      if (viewer_id) {
+        if (user.id === viewer_id) {
+          throw new UnauthorizedException(
+            'O proprietário da lista não pode ser visualizador da mesma',
+          );
+        }
 
-      await this.listsRepository.save(list);
+        const existsUserViewer = await this.usersRepository.findOne({
+          where: { id: viewer_id },
+        });
 
-      return list;
+        if (!existsUserViewer) {
+          throw new NotFoundException('O visualizador não foi encontrado');
+        }
+
+        const list = this.listsRepository.create({
+          name,
+          user_id,
+          marketplace_id,
+          viewer_id: existsUserViewer.id,
+          quantity_products: 0,
+          total_price: 0,
+        });
+
+        await this.listsRepository.save(list);
+
+        return list;
+      } else {
+        const list = this.listsRepository.create({
+          name,
+          user_id,
+          marketplace_id,
+          quantity_products: 0,
+          total_price: 0,
+        });
+
+        await this.listsRepository.save(list);
+
+        return list;
+      }
     } catch (err) {
       if (err) throw err;
       throw new InternalServerErrorException(

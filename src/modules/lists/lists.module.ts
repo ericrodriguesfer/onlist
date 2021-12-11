@@ -18,6 +18,7 @@ import { GetListRelatedUserService } from './services/get-list-related-user.serv
 import { InsertProductInListService } from './services/insert-product-in-list.service';
 import { ListProductInListService } from './services/list-product-in-list.service';
 import { DeleteProductInListService } from './services/delete-product-in-list.service';
+import { GetListRelatedViewerInListService } from './services/get-list-related-viewer-in-list.service';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { DeleteProductInListService } from './services/delete-product-in-list.se
     InsertProductInListService,
     ListProductInListService,
     DeleteProductInListService,
+    GetListRelatedViewerInListService,
   ],
 })
 export class ListsModule implements NestModule {
@@ -45,6 +47,7 @@ export class ListsModule implements NestModule {
       .apply(ensureAuthenticatedMiddleware)
       .forRoutes(
         { path: '/lists', method: RequestMethod.GET },
+        { path: '/lists/viewer', method: RequestMethod.GET },
         { path: '/lists/:id', method: RequestMethod.GET },
         { path: '/lists', method: RequestMethod.POST },
         { path: '/lists/insert', method: RequestMethod.POST },

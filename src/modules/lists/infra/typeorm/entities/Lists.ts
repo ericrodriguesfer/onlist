@@ -38,4 +38,11 @@ export class Lists {
   @JoinColumn({ name: 'marketplace_id' })
   @ManyToOne(() => Marketplace, (markeplace) => markeplace.id)
   marketplace: Marketplace;
+
+  @Column({ default: null })
+  viewer_id: string;
+
+  @JoinColumn({ name: 'viewer_id' })
+  @ManyToOne(() => Users, (user) => user.id)
+  viewer: Users;
 }
