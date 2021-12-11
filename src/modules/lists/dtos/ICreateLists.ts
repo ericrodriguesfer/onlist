@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsInt } from 'class-validator';
+import { IsNotEmpty, IsString, IsInt, IsOptional } from 'class-validator';
 
 export class ICreateLists {
   @IsNotEmpty({ message: 'o nome não pode ser nulo' })
@@ -12,4 +12,8 @@ export class ICreateLists {
   @IsNotEmpty({ message: 'valor não pode ser nulo - products_id' })
   @IsString({ message: 'o valor é uma string' })
   marketplace_id: string;
+
+  @IsOptional({ message: 'adicionar um visualizador a lista é opcional' })
+  @IsString({ message: 'o valor é uma string' })
+  viewer_id?: string;
 }

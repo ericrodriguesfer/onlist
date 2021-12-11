@@ -8,6 +8,7 @@ import {
   Request,
 } from '@nestjs/common';
 import { DeleteProductInListService } from 'src/modules/lists/services/delete-product-in-list.service';
+import { GetListRelatedViewerInListService } from 'src/modules/lists/services/get-list-related-viewer-in-list.service';
 import { InsertProductInListService } from 'src/modules/lists/services/insert-product-in-list.service';
 import { ListProductInListService } from 'src/modules/lists/services/list-product-in-list.service';
 import { Products } from 'src/modules/products/infra/typeorm/entities/Products';
@@ -38,11 +39,19 @@ export class ListsController {
     private insertProductInListService: InsertProductInListService,
     private listProductInListService: ListProductInListService,
     private deleteProductInListService: DeleteProductInListService,
+    private listRelatedUserViewerListService: GetListRelatedViewerInListService,
   ) {}
 
   @Get()
   async getListRelatedUser(@Request() req: IRequestUser): Promise<Lists[]> {
     return this.listRelatedUserService.execute({ user_id: req.user.id });
+  }
+
+  @Get('/viewer')
+  async getListViewerInList(@Request() req: IRequestUser): Promise<Lists[]> {
+    return this.listRelatedUserViewerListService.execute({
+      user_id: req.user.id,
+    });
   }
 
   @Get('/:id')
@@ -59,12 +68,13 @@ export class ListsController {
   @Post()
   async createList(
     @Request() req: IRequestUser,
-    @Body() { name, marketplace_id }: ICreateLists,
+    @Body() { name, marketplace_id, viewer_id }: ICreateLists,
   ): Promise<any> {
     return this.createListService.execute({
       name,
       marketplace_id,
       user_id: req.user.id,
+      viewer_id,
     });
   }
 
