@@ -3,4 +3,11 @@
     <string name="titleMainActivity">Olá OnList</string>
     <string name="textTitleLoginActivity">Realize seu login na OnList</string>
     <string name="textSubTitleLoginActivity">Seja bem vindo ao OnList, descomplique sua vida e torne suas listas de compras mais divertidas.</string>
+    <string name="textTitleInputLoginEmailForm">E-mail:</string>
+    <string name="textTitleInputLoginPasswordForm">Senha:</string>
+    <string name="textTileLoginActivityInfoUserNotRegistered">Caso ainda não possui cadastro na OnList:</string>
+    <string name="textTitleLoginActivityRedirectionUserRegisterScreen">Cadastre-se aqui</string>
+    <string name="textTileButtonLogin">Acessar</string>
+    <string name="placeholderInputEmailLoginForm">Digite seu email de login</string>
+    <string name="placeholderInputPasswordLoginForm">Digite sua senha de login</string>
 </resources>

@@ -6,41 +6,132 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textTitleLoginActivity"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/Roboto_Black"
-            android:text="@string/textTitleLoginActivity"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:layout_marginTop="60dp"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textSubTitleLoginActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:fontFamily="@font/Roboto_Regular"
-            android:text="@string/textSubTitleLoginActivity"
-            android:textAlignment="viewStart"
-            android:textColor="@color/gray"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textTitleLoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="@string/textTitleLoginActivity"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-        <ImageView
-            android:id="@+id/imageUserLoginActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_user_login"
-            tools:ignore="ImageContrastCheck"
-            android:layout_marginTop="30dp"/>
+            <TextView
+                android:id="@+id/textSubTitleLoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/textSubTitleLoginActivity"
+                android:textAlignment="viewStart"
+                android:textColor="@color/gray"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageUserLoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/icon_user_login"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textTitleLabelInputEmailLoginForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputLoginEmailForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_email_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputEmailLoginForm"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <TextView
+                android:id="@+id/textTitleLabelInputPasswordLoginForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputLoginPasswordForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_password_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputPasswordLoginForm"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <Button
+                android:id="@+id/buttonActionLoginForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/textTileButtonLogin"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textTitleInfoUserNotRegistered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTileLoginActivityInfoUserNotRegistered"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textTitleRedirectionUserRegisterScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleLoginActivityRedirectionUserRegisterScreen"
+                android:textAlignment="center"
+                android:textColor="@color/green_onlist"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
