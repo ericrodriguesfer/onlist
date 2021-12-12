@@ -10,4 +10,21 @@
     <string name="textTileButtonLogin">Acessar</string>
     <string name="placeholderInputEmailLoginForm">Digite seu email de login</string>
     <string name="placeholderInputPasswordLoginForm">Digite sua senha de login</string>
+    <string name="textTitleRegisterUserActivity">Registre-se na OnList</string>
+    <string name="textSubTitleRegisterUserActivity">Se cadastre em nossa plataforma e nos dê uma chance de otimizar suas listas de compras.</string>
+    <string name="textTitleInputRegisterNameForm">Nome:</string>
+    <string name="textTitleInputRegisterEmailForm">E-mail:</string>
+    <string name="textTitleInputRegisterPasswordForm">Senha:</string>
+    <string name="textTitleInputRegisterPasswordConfirmForm">Confirmar senha:</string>
+    <string name="textTitleInputRegisterTelephoneForm">Telefone:</string>
+    <string name="textTitleInputRegisterInitialForm">Iniciais:</string>
+    <string name="placeholderInputNameRegisterUserForm">Digite seu nome para registro</string>
+    <string name="placeholderInputEmailRegisterUserForm">Digite seu email para registro</string>
+    <string name="placeholderInputPasswordRegisterUserForm">Digite sua senha para registro</string>
+    <string name="placeholderInputPasswordRegisterConfirmUserForm">Digite sua senha novamente</string>
+    <string name="placeholderInputPhoneRegisterUserForm">Digite seu telefone</string>
+    <string name="placeholderInputInitalsRegisterUserForm">Inicais</string>
+    <string name="textTileButtonRegisterUser">Registre-se</string>
+    <string name="textTileRegisterUserActivityInfoUserRegistered">Caso já esteja cadastrado aqui na OnList:</string>
+    <string name="textTitleRegisterUserActivityRedirectionUserLoginScreen">Ir ao login</string>
 </resources>
