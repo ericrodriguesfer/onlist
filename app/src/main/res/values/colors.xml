@@ -8,4 +8,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#695D5D</color>
     <color name="input_text_color">#695D5D</color>
+    <color name="color_success_toast">#66BB22</color>
+    <color name="color_warning_toast">#F8D20C</color>
+    <color name="color_error_toast">#F80C0C</color>
 </resources>
