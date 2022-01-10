@@ -38,7 +38,7 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageUserLoginActivity"
+                android:id="@+id/imageUserLoginActivityIcon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -46,7 +46,7 @@
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/textTitleLabelInputEmailLoginForm"
+                android:id="@+id/emailLabelFormLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -57,7 +57,7 @@
                 android:textColor="@color/black" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/inputEmailFormLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -75,7 +75,7 @@
                 android:padding="15dp" />
 
             <TextView
-                android:id="@+id/textTitleLabelInputPasswordLoginForm"
+                android:id="@+id/passwordLabelFormLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -85,7 +85,7 @@
                 android:textColor="@color/black" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/inputPasswordFormLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -103,7 +103,7 @@
                 android:padding="15dp" />
 
             <Button
-                android:id="@+id/buttonActionLoginForm"
+                android:id="@+id/loginAction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -114,7 +114,7 @@
                 android:textColor="#FFFFFF" />
 
             <TextView
-                android:id="@+id/textTitleInfoUserNotRegistered"
+                android:id="@+id/textTitleUserNotRegisteredLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -123,7 +123,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/textTitleRedirectionUserRegisterScreen"
+                android:id="@+id/linkScreenRegisterUserLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
