@@ -11,7 +11,15 @@
     <string name="placeholderInputEmailLoginForm">Digite seu email de login</string>
     <string name="placeholderInputPasswordLoginForm">Digite sua senha de login</string>
     <string name="textTitleRegisterUserActivity">Registre-se na OnList</string>
+    <string name="textTitleRegisterProductActivity">Cadastre seu produto</string>
+    <string name="textTitleUpdateProductActivity">Edite seu produto</string>
+    <string name="textTitleUpdateUserActivity">Editar perfil</string>
+    <string name="textTitleRegisterListActivity">Cadastre sua lista</string>
     <string name="textSubTitleRegisterUserActivity">Se cadastre em nossa plataforma e nos dê uma chance de otimizar suas listas de compras.</string>
+    <string name="textSubTitleUpdateUserActivity">Insira novos dados para serem atualizados em seu perfil.</string>
+    <string name="textSubTitleRegisterProductActivity">Insira os dados do produto que deseja cadastradrar.</string>
+    <string name="textSubTitleUpdateProductActivity">Insira os dados do produto que deseja editar.</string>
+    <string name="textSubTitleRegisterListActivity">Insira os dados da lista que deseja cadastrar, e mude a forma como você vai fazer suas compras.</string>
     <string name="textTitleInputRegisterNameForm">Nome:</string>
     <string name="textTitleInputRegisterEmailForm">E-mail:</string>
     <string name="textTitleInputRegisterPasswordForm">Senha:</string>
@@ -25,6 +33,20 @@
     <string name="placeholderInputPhoneRegisterUserForm">Digite seu telefone</string>
     <string name="placeholderInputInitalsRegisterUserForm">Inicais</string>
     <string name="textTileButtonRegisterUser">Registre-se</string>
+    <string name="textTileButtonUpdateUser">Salvar edição</string>
     <string name="textTileRegisterUserActivityInfoUserRegistered">Caso já esteja cadastrado aqui na OnList:</string>
     <string name="textTitleRegisterUserActivityRedirectionUserLoginScreen">Ir ao login</string>
+    <string name="textTitleInputRegisterProductNameForm">Nome:</string>
+    <string name="textTitleInputRegisterProductPriceForm">Preço:</string>
+    <string name="textTitleInputRegisterListNameForm">Nome da lista:</string>
+    <string name="textTitleInputRegisterListMarketForm">Selecione o mercado desta lista:</string>
+    <string name="textTitleInputRegisterListViewerForm">Seleciona um visualizador desta lista:</string>
+    <string name="placeholderInputNameRegisterProductForm">Digite o nome do produto</string>
+    <string name="placeholderInputPriceRegisterProductForm">Digite o preço do produto</string>
+    <string name="placeholderInputNameRegisterListForm">Digite o nome da lista</string>
+    <string name="placeholderInputMarketRegisterListForm">Digite o nome do mercado da lista</string>
+    <string name="placeholderInputViewerRegisterListForm">Digite o nome do visualizador da lista</string>
+    <string name="textTileButtonCreateProduct">Cadastrar produto</string>
+    <string name="textTileButtonUpdateProduct">Salvar produto</string>
+    <string name="textTileButtonRegisterList">Cadastrar lista</string>
 </resources>
