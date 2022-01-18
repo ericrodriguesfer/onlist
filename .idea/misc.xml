@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/custom_edit_icon.xml" value="0.3765625" />
         <entry key="app/src/main/res/drawable/custom_input_form.xml" value="0.37916666666666665" />
         <entry key="app/src/main/res/drawable/custom_market_icon.xml" value="0.3765625" />
+        <entry key="app/src/main/res/drawable/custom_marketplace_icon_item_list.xml" value="0.3765625" />
+        <entry key="app/src/main/res/drawable/custom_marketplace_item_list.xml" value="0.3765625" />
         <entry key="app/src/main/res/drawable/custom_money_icon.xml" value="0.3765625" />
         <entry key="app/src/main/res/drawable/custom_people_icon.xml" value="0.37916666666666665" />
         <entry key="app/src/main/res/drawable/custom_viewer_icon.xml" value="0.3765625" />
@@ -39,6 +41,7 @@
         <entry key="app/src/main/res/drawable/toast_success.xml" value="0.37916666666666665" />
         <entry key="app/src/main/res/drawable/toast_warning.xml" value="0.37916666666666665" />
         <entry key="app/src/main/res/font/font.xml" value="0.3" />
+        <entry key="app/src/main/res/layout/activity_list_marketplaces.xml" value="0.286231884057971" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register_list.xml" value="0.2907608695652174" />
         <entry key="app/src/main/res/layout/activity_register_product.xml" value="0.2907608695652174" />
@@ -46,6 +49,7 @@
         <entry key="app/src/main/res/layout/activity_update_product.xml" value="0.2907608695652174" />
         <entry key="app/src/main/res/layout/activity_update_user.xml" value="0.2907608695652174" />
         <entry key="app/src/main/res/layout/custom_toast.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/list_item_list_marketplaces.xml" value="0.33" />
       </map>
     </option>
   </component>

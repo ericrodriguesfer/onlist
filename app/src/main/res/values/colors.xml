@@ -11,4 +11,6 @@
     <color name="color_success_toast">#66BB22</color>
     <color name="color_warning_toast">#F8D20C</color>
     <color name="color_error_toast">#F80C0C</color>
+    <color name="color_background_marketplace_item_list">#F0F0F0</color>
+    <color name="color_background_marketplace_icon_item_list">#C4C4C4</color>
 </resources>
