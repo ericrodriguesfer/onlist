@@ -50,4 +50,6 @@
     <string name="textTileButtonUpdateProduct">Salvar produto</string>
     <string name="textTileButtonRegisterList">Cadastrar lista</string>
     <string name="textTileMarketplaceItemList">Mercado do Fulano</string>
+    <string name="btn_register_new_market_list">Cadastrar novo mercado</string>
+    <string name="btn_list_item_marketplace">Adicionar produto a lista</string>
 </resources>
