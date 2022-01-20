@@ -52,4 +52,6 @@
     <string name="textTileMarketplaceItemList">Mercado do Fulano</string>
     <string name="btn_register_new_market_list">Cadastrar novo mercado</string>
     <string name="btn_list_item_marketplace">Adicionar produto a lista</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
