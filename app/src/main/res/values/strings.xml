@@ -54,6 +54,12 @@
     <string name="btn_list_item_marketplace">Adicionar produto a lista</string>
     <string name="nameUserMenuPerfil">João da Silva Magalhães</string>
     <string name="emailUserMenuPerfil">joao.magalhaes@gmail.com</string>
+    <string name="titleProductItemList">Maça</string>
+    <string name="titleListItemList">Lista de número um</string>
+    <string name="priceProductItemList">Preço: R$ 6.00</string>
+    <string name="marketListItemList">Mercado seu Zé</string>
+    <string name="btn_register_new_product_list">Cadastrar novo produto</string>
+    <string name="btn_register_new_list_list">Cadastrar nova lista</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
 </resources>
