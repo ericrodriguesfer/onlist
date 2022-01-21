@@ -79,6 +79,8 @@
         <entry key="app/src/main/res/layout/activity_update_user.xml" value="0.2907608695652174" />
         <entry key="app/src/main/res/layout/custom_toast.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_item_list_marketplaces.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.27717391304347827" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.36041666666666666" />
       </map>
     </option>
   </component>
