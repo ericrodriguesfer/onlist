@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="45dp"
-            android:layout_marginRight="185dp"
+            android:layout_marginRight="187dp"
             android:text="@string/marketListItemList"
             android:textColor="@color/green_onlist"
             android:textSize="14sp"
