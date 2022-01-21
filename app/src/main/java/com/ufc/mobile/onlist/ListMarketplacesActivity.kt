@@ -46,6 +46,7 @@ class ListMarketplacesActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle("Lista de Mercados")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()

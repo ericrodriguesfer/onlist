@@ -24,6 +24,7 @@ class UpdateUserActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle("Edição De Perfil")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
