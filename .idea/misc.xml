@@ -6,29 +6,47 @@
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_button.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_cart_icon.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_city_icon.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_edit_icon.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_icon_navigation.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_input_form.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_market_icon.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_marketplace_icon_item_list.xml" value="0.2703125" />
-        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_people_icon.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_money_icon.xml" value="0.2074074074074074" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_people_icon.xml" value="0.264" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custom_street_icon.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custon_email_icon.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custon_icon_initials.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/custon_password_icon.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/ic_list_focus.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/ic_maps_focus.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_cart_focus.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_city.xml" value="0.2074074074074074" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_city_focus.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_initials.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_initials_focus.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_market.xml" value="0.2703125" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_market_focus.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_navigation.xml" value="0.2074074074074074" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_navigation_focus.xml" value="0.2074074074074074" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_street.xml" value="0.2074074074074074" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_street_focus.xml" value="0.2074074074074074" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/drawable/icon_viewer.xml" value="0.2703125" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_list_lists.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_list_marketplaces.xml" value="0.264" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_list_products.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_register_list.xml" value="0.22826086956521738" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_register_market.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_register_product.xml" value="0.1265625" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_register_user.xml" value="0.22826086956521738" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_update_market.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_update_product.xml" value="0.1265625" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/activity_update_user.xml" value="0.1265625" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/header.xml" value="0.25416666666666665" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/list_item_list_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/list_item_list_marketplaces.xml" value="0.2" />
+        <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/list_item_list_products.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/layout/nav_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Desenvolvimento-Faculdade/Desenvolvimento/Projetos-Github/mobile/app/src/main/res/menu/nav_menu.xml" value="0.25416666666666665" />
