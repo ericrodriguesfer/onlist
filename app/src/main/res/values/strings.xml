@@ -62,4 +62,26 @@
     <string name="btn_register_new_list_list">Cadastrar nova lista</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="textTitleRegisterMarketActivity">Cadastrar mercado</string>
+    <string name="textSubTitleRegisterMarketActivity">Insira os dados do mercado que deseja cadastrar em sua lista para posteriormente vir a adicionar os produtos deste.</string>
+    <string name="textTitleInputRegisterNameMarketForm">Nome do mercado</string>
+    <string name="textTitleInputSteetForm">Nome da rua</string>
+    <string name="placeholderInputNameRegisterMarketForm">Digite o nome do mercado</string>
+    <string name="placeholderInputDistrictRegisterMarketForm">Nome do bairro</string>
+    <string name="placeholderInputStreetRegisterMarketForm">Nome da rua</string>
+    <string name="textTitleInputRegisterDistrictForm">Nome do bairro</string>
+    <string name="textTitleInputRegisterCityForm">Nome da cidade</string>
+    <string name="placeholderInputRegisterCityForm">Nome da cidade</string>
+    <string name="textTitleInputRegisterCEPMarketForm">CEP</string>
+    <string name="textTitleInputRegisterNumberMarketForm">Número</string>
+    <string name="placeholderInputCEPRegisterMarketForm">Digite o CEP</string>
+    <string name="placeholderInputNumberRegisterMarketForm">703</string>
+    <string name="textTileButtonRegisterMarket">Cadastrar novo mercado</string>
+    <string name="textTitleInputLongitudeForm">Longitude</string>
+    <string name="placeholderInputLongitudeRegisterMarketForm">Digite a longitude</string>
+    <string name="textTitleInputLatitudeForm">Latitude</string>
+    <string name="placeholderInputLatitudeRegisterMarketForm">Digite a latitude</string>
+    <string name="textTitleUpdateMarketActivity">Editar mercado</string>
+    <string name="textSubTitleUpdateMarketActivity">Altere conforme o necessário os dados deste mercado já cadastrado em sua lista.</string>
+    <string name="textTileButtonUpdateMarket">Atualizar mercado</string>
 </resources>
