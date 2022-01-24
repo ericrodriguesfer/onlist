@@ -109,7 +109,8 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/custom_button"
                     android:text="@string/textTileButtonCreateProduct"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:onClick="registerProduct"/>
 
             </LinearLayout>
         </ScrollView>

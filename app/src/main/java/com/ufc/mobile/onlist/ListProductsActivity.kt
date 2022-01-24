@@ -1,7 +1,9 @@
 package com.ufc.mobile.onlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.adapter.ListItemProductAdapter
 import com.ufc.mobile.onlist.data.ProductData
+import com.ufc.mobile.onlist.util.ToastCustom
 import kotlinx.android.synthetic.main.activity_list_products.*
 
 class ListProductsActivity: AppCompatActivity() {
@@ -44,18 +47,47 @@ class ListProductsActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Cadastro de Lista")
+        supportActionBar?.setTitle("Lista de Produtos")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nav_market -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
-                R.id.nav_list_buy -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
-                R.id.nav_map_markets -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
-                R.id.nav_list_products -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
-                R.id.nav_list_shared -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
-                R.id.nav_logout -> Toast.makeText(applicationContext, "Clicked home", Toast.LENGTH_SHORT).show()
+                R.id.nav_market -> {
+                    val intentListMarkets = Intent(this, ListMarketplacesActivity::class.java)
+                    startActivity(intentListMarkets)
+                }
+
+                R.id.nav_list_buy -> {
+                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
+                    startActivity(intentListsBuy)
+                }
+
+                R.id.nav_map_markets -> {
+                    val toastCustom = ToastCustom(ToastCustom.WARNING, "Ainda será implementada na parte de sensores", this)
+                    toastCustom.getToast().show()
+                }
+
+                R.id.nav_list_products -> {
+                    val productsList = Intent(this, ListProductsActivity::class.java)
+                    startActivity(productsList)
+                }
+
+                R.id.nav_list_shared -> {
+                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
+                    startActivity(intentListsBuy)
+                }
+
+                R.id.nav_logout -> {
+                    val intentLogin = Intent(this, LoginActivity::class.java)
+                    startActivity(intentLogin)
+                }
             }
+
             true
         }
+    }
+
+    fun addProduct (view: View) {
+        val intentRegisterProduct = Intent(this, RegisterProductActivity::class.java)
+        startActivity(intentRegisterProduct)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

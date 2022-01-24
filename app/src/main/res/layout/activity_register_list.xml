@@ -138,7 +138,8 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/custom_button"
                     android:text="@string/textTileButtonRegisterList"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:onClick="registerList" />
 
             </LinearLayout>
         </ScrollView>

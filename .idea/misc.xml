@@ -100,8 +100,9 @@
         <entry key="app/src/main/res/layout/activity_list_lists.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_list_marketplaces.xml" value="0.286231884057971" />
         <entry key="app/src/main/res/layout/activity_list_products.xml" value="0.27717391304347827" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_register_list.xml" value="0.2907608695652174" />
+        <entry key="app/src/main/res/layout/activity_register_market.xml" value="0.27219202898550726" />
         <entry key="app/src/main/res/layout/activity_register_product.xml" value="0.2907608695652174" />
         <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.36096014492753625" />
         <entry key="app/src/main/res/layout/activity_update_product.xml" value="0.2907608695652174" />

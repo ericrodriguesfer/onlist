@@ -111,7 +111,8 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/custom_button"
                 android:text="@string/textTileButtonLogin"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:onClick="clickLogin"/>
 
             <TextView
                 android:id="@+id/textTitleUserNotRegisteredLogin"
@@ -131,7 +132,8 @@
                 android:text="@string/textTitleLoginActivityRedirectionUserRegisterScreen"
                 android:textAlignment="center"
                 android:textColor="@color/green_onlist"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:onClick="clickLinkRegisterUser"/>
 
         </LinearLayout>
     </ScrollView>
