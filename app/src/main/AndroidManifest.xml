@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnList">
         <activity
-            android:name=".RegiserProductInList"
+            android:name=".RegisterProductInListActivity"
             android:exported="true"
             >
             <intent-filter>

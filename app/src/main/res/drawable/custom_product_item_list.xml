@@ -9,7 +9,7 @@
 
     <item android:state_enabled="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/color_background_marketplace_item_list" />
+            <solid android:color="@color/color_background_product_item_list" />
             <corners android:radius="10dp" />
         </shape>
     </item>
