@@ -4,45 +4,39 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.ufc.mobile.onlist.adapter.ListItemMarketplaceAdapter
-import com.ufc.mobile.onlist.data.MarketplaceData
+import com.ufc.mobile.onlist.adapter.ListItemProductInListAdapter
+import com.ufc.mobile.onlist.data.ProductInListData
 import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_list_marketplaces.*
+import kotlinx.android.synthetic.main.activity_add_product_list.*
 
-class ListMarketplacesActivity: AppCompatActivity() {
+class RegisterProductInListActivity: AppCompatActivity() {
 
-    private lateinit var marketplaceDataList: ArrayList<MarketplaceData>
-    private lateinit var listMarketplaces: ListView
+    private lateinit var listsProductInListData: ArrayList<ProductInListData>
+    private lateinit var listLists: ListView
     lateinit var toggle : ActionBarDrawerToggle
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_marketplaces)
+        setContentView(R.layout.activity_add_product_list)
 
-        this.listMarketplaces = findViewById(R.id.listViewMarketplaces)
-        this.marketplaceDataList = ArrayList()
+        this.listLists = findViewById(R.id.listViewProductsInList)
+        this.listsProductInListData = ArrayList()
 
         for (i in 1..20) {
-            val marketplaceData: MarketplaceData = MarketplaceData("Mercado ${i}")
-            this.marketplaceDataList.add(marketplaceData)
+            val productListData: ProductInListData = ProductInListData("Maça ${i}", (i * 1.0), (i * 2))
+            this.listsProductInListData.add(productListData)
         }
 
-        this.listViewMarketplaces.isClickable = true
-        this.listViewMarketplaces.adapter = ListItemMarketplaceAdapter(this, marketplaceDataList)
-        this.listMarketplaces.setOnItemClickListener { parent, view, position, id ->
-            val intentListsBuy = Intent(this, ListListsActivity::class.java)
-            startActivity(intentListsBuy)
-        }
+        this.listViewProductsInList.isClickable = true
+        this.listViewProductsInList.adapter = ListItemProductInListAdapter(this, listsProductInListData)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutAddProductOnListActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -50,7 +44,7 @@ class ListMarketplacesActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Lista de Mercados")
+        supportActionBar?.setTitle("Nome da lista")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -88,9 +82,9 @@ class ListMarketplacesActivity: AppCompatActivity() {
         }
     }
 
-    fun craateNewMarket (view: View) {
-        val intentNewMarket = Intent(this, RegisterMarketplaceActivity::class.java)
-        startActivity(intentNewMarket)
+    fun addProductInList (view: View) {
+        val productsList = Intent(this, ListProductsActivity::class.java)
+        startActivity(productsList)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

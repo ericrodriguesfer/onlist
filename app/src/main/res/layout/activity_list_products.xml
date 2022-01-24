@@ -31,7 +31,8 @@
                 android:background="@color/green_onlist"
                 app:cardBackgroundColor="@color/green_onlist"
                 app:cardCornerRadius="10dp"
-                android:layout_height="65dp">
+                android:layout_height="65dp"
+                android:onClick="addProduct">
                 <TextView
                     android:text="@string/btn_register_new_product_list"
                     android:layout_width="wrap_content"

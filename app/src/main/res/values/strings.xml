@@ -84,4 +84,13 @@
     <string name="textTitleUpdateMarketActivity">Editar mercado</string>
     <string name="textSubTitleUpdateMarketActivity">Altere conforme o necessário os dados deste mercado já cadastrado em sua lista.</string>
     <string name="textTileButtonUpdateMarket">Atualizar mercado</string>
+    <string name="textTitleProductItemInList">Maçã</string>
+    <string name="btn_add_new_product_list">Adicionar produto a lista</string>
+    <string name="atual_price">Preço atual</string>
+    <string name="price_in_number">R$ 273,27</string>
+    <string name="qtd_products">Quantidade de produtos</string>
+    <string name="number_of_products">53 produtos</string>
+    <string name="titleProductInList">Maça</string>
+    <string name="quantityProductInList">Quantidade: 25</string>
+    <string name="priceProductInList">Preço: R$ 25</string>
 </resources>
