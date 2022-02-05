@@ -2,47 +2,33 @@ package com.ufc.mobile.onlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.navigation.NavigationView
-import com.ufc.mobile.onlist.adapter.ListItemMarketplaceAdapter
-import com.ufc.mobile.onlist.data.MarketplaceData
-import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_list_marketplaces.*
 
-class ListMarketplacesActivity: AppCompatActivity() {
+class MapActivity: AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var marketplaceDataList: ArrayList<MarketplaceData>
-    private lateinit var listMarketplaces: ListView
+    private lateinit var map: GoogleMap
     lateinit var toggle : ActionBarDrawerToggle
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_marketplaces)
+        setContentView(R.layout.activity_map)
 
-        this.listMarketplaces = findViewById(R.id.listViewMarketplaces)
-        this.marketplaceDataList = ArrayList()
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
-        for (i in 1..20) {
-            val marketplaceData: MarketplaceData = MarketplaceData("Mercado ${i}")
-            this.marketplaceDataList.add(marketplaceData)
-        }
-
-        this.listViewMarketplaces.isClickable = true
-        this.listViewMarketplaces.adapter = ListItemMarketplaceAdapter(this, marketplaceDataList)
-        this.listMarketplaces.setOnItemClickListener { parent, view, position, id ->
-            val intentListsBuy = Intent(this, ListListsActivity::class.java)
-            startActivity(intentListsBuy)
-        }
-
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutMapActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -50,7 +36,7 @@ class ListMarketplacesActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Lista de Mercados")
+        supportActionBar?.setTitle("Mapa")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -88,9 +74,14 @@ class ListMarketplacesActivity: AppCompatActivity() {
         }
     }
 
-    fun craateNewMarket (view: View) {
-        val intentNewMarket = Intent(this, RegisterMarketplaceActivity::class.java)
-        startActivity(intentNewMarket)
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        val sydney = LatLng(-4.979087, -39.056499)
+        map.addMarker(MarkerOptions()
+            .position(sydney)
+            .title("Teste de Mapa"))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15F))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

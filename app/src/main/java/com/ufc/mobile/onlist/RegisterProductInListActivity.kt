@@ -58,8 +58,8 @@ class RegisterProductInListActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_map_markets -> {
-                    val toastCustom = ToastCustom(ToastCustom.WARNING, "Ainda será implementada na parte de sensores", this)
-                    toastCustom.getToast().show()
+                    val intentMap = Intent(this, MapActivity::class.java)
+                    startActivity(intentMap)
                 }
 
                 R.id.nav_list_products -> {
