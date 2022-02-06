@@ -2,6 +2,7 @@ package com.ufc.mobile.onlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -9,7 +10,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.ufc.mobile.onlist.util.ToastCustom
+import kotlinx.android.synthetic.main.activity_register_product.*
+import kotlinx.android.synthetic.main.activity_register_user.*
 
 class RegisterProductActivity: AppCompatActivity() {
 
@@ -63,6 +67,16 @@ class RegisterProductActivity: AppCompatActivity() {
 
             true
         }
+
+        registerProductAction.setOnClickListener({
+            val nome = inputEmailFormRegisterProduct.text.toString();
+            val preco: Float = inputPriceFormRegisterProduct.text.toString().toFloat();
+
+            if(nome.isEmpty() || preco.isNaN()){
+                Toast.makeText(this, "Por favor insira todos os dados", Toast.LENGTH_SHORT).show();
+            }
+            saveFirestore(nome, preco);
+        })
     }
 
     fun registerProduct (view: View) {
@@ -75,5 +89,21 @@ class RegisterProductActivity: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun saveFirestore(nome: String, preco: Float){
+        val db = FirebaseFirestore.getInstance();
+        val product: MutableMap<String, Any> = HashMap();
+        product["nome"] = nome;
+        product["preco"] = preco;
+
+        db.collection("products")
+            .add(product)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Produto cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Erro ao cadastrar o produto", Toast.LENGTH_SHORT).show();
+            }
     }
 }
