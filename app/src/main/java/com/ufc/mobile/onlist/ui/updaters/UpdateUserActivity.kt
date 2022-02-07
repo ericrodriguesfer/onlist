@@ -1,14 +1,18 @@
-package com.ufc.mobile.onlist
+package com.ufc.mobile.onlist.ui.updaters
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.ufc.mobile.onlist.util.ToastCustom
+import com.ufc.mobile.onlist.R
+import com.ufc.mobile.onlist.ui.maps.MapActivity
+import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
+import com.ufc.mobile.onlist.ui.lists.ListListsActivity
+import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
+import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
 
 class UpdateUserActivity: AppCompatActivity() {
 

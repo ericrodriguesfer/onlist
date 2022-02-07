@@ -1,27 +1,38 @@
-package com.ufc.mobile.onlist
+package com.ufc.mobile.onlist.ui.maps
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.navigation.NavigationView
-import com.ufc.mobile.onlist.adapter.ListItemProductAdapter
-import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_list_products.*
+import com.ufc.mobile.onlist.R
+import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
+import com.ufc.mobile.onlist.ui.lists.ListListsActivity
+import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
+import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
 
-class RegisterMarketplaceActivity: AppCompatActivity() {
+class MapActivity: AppCompatActivity(), OnMapReadyCallback {
 
+    private lateinit var map: GoogleMap
     lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_market)
+        setContentView(R.layout.activity_map)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutRegisterMarket)
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutMapActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -29,7 +40,7 @@ class RegisterMarketplaceActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Cadastro de Mercado")
+        supportActionBar?.setTitle("Mapa")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -67,9 +78,14 @@ class RegisterMarketplaceActivity: AppCompatActivity() {
         }
     }
 
-    fun registerMarket (view: View) {
-        val intentHome = Intent(this, ListMarketplacesActivity::class.java)
-        startActivity(intentHome)
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        val sydney = LatLng(-4.979087, -39.056499)
+        map.addMarker(MarkerOptions()
+            .position(sydney)
+            .title("Teste de Mapa"))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15F))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

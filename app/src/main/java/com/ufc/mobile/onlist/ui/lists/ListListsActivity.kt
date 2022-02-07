@@ -1,42 +1,49 @@
-package com.ufc.mobile.onlist
+package com.ufc.mobile.onlist.ui.lists
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.ufc.mobile.onlist.adapter.ListItemProductInListAdapter
-import com.ufc.mobile.onlist.data.ProductInListData
-import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_add_product_list.*
+import com.ufc.mobile.onlist.R
+import com.ufc.mobile.onlist.adapter.ListItemListAdapter
+import com.ufc.mobile.onlist.data.ListData
+import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
+import com.ufc.mobile.onlist.ui.maps.MapActivity
+import com.ufc.mobile.onlist.ui.registers.RegisterListActivity
+import com.ufc.mobile.onlist.ui.registers.RegisterProductInListActivity
+import kotlinx.android.synthetic.main.activity_list_lists.*
 
-class RegisterProductInListActivity: AppCompatActivity() {
+class ListListsActivity: AppCompatActivity() {
 
-    private lateinit var listsProductInListData: ArrayList<ProductInListData>
+    private lateinit var listsDataList: ArrayList<ListData>
     private lateinit var listLists: ListView
     lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_product_list)
+        setContentView(R.layout.activity_list_lists)
 
-        this.listLists = findViewById(R.id.listViewProductsInList)
-        this.listsProductInListData = ArrayList()
+        this.listLists = findViewById(R.id.listViewLists)
+        this.listsDataList = ArrayList()
 
         for (i in 1..20) {
-            val productListData: ProductInListData = ProductInListData("Maça ${i}", (i * 1.0), (i * 2))
-            this.listsProductInListData.add(productListData)
+            val listData: ListData = ListData("Lista de número ${i}", "Mercaso seu Zé")
+            this.listsDataList.add(listData)
         }
 
-        this.listViewProductsInList.isClickable = true
-        this.listViewProductsInList.adapter = ListItemProductInListAdapter(this, listsProductInListData)
+        this.listViewLists.isClickable = true
+        this.listViewLists.adapter = ListItemListAdapter(this, listsDataList)
+        this.listLists.setOnItemClickListener { parent, view, position, id ->
+            val intentProductsInList = Intent(this, RegisterProductInListActivity::class.java)
+            startActivity(intentProductsInList)
+        }
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutAddProductOnListActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListListsActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -44,7 +51,7 @@ class RegisterProductInListActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Nome da lista")
+        supportActionBar?.setTitle("Lista de Compras")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -82,9 +89,9 @@ class RegisterProductInListActivity: AppCompatActivity() {
         }
     }
 
-    fun addProductInList (view: View) {
-        val productsList = Intent(this, ListProductsActivity::class.java)
-        startActivity(productsList)
+    fun createNewList (view: View) {
+        val intentNewList = Intent(this, RegisterListActivity::class.java)
+        startActivity(intentNewList)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -93,4 +100,5 @@ class RegisterProductInListActivity: AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

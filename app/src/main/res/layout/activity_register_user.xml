@@ -92,7 +92,7 @@
                 android:drawablePadding="5dp"
                 android:ems="10"
                 android:hint="@string/placeholderInputEmailRegisterUserForm"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/input_text_color"
                 android:padding="15dp" />
 
@@ -197,8 +197,9 @@
                     android:ems="10"
                     android:fontFamily="@font/roboto_regular"
                     android:hint="@string/placeholderInputPhoneRegisterUserForm"
-                    android:inputType="textPassword"
+                    android:inputType="phone"
                     android:padding="15dp"
+                    android:maxLength="11"
                     android:textColor="@color/input_text_color" />
 
                 <EditText
@@ -216,6 +217,7 @@
                     android:hint="@string/placeholderInputInitalsRegisterUserForm"
                     android:inputType="textPassword"
                     android:padding="15dp"
+                    android:maxLength="2"
                     android:textColor="@color/input_text_color" />
             </LinearLayout>
 

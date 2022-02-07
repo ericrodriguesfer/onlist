@@ -1,46 +1,32 @@
-package com.ufc.mobile.onlist
+package com.ufc.mobile.onlist.ui.registers
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.ufc.mobile.onlist.adapter.ListItemListAdapter
-import com.ufc.mobile.onlist.data.ListData
-import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_list_lists.*
+import com.google.firebase.firestore.FirebaseFirestore
+import com.ufc.mobile.onlist.R
+import com.ufc.mobile.onlist.ui.maps.MapActivity
+import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
+import com.ufc.mobile.onlist.ui.lists.ListListsActivity
+import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
+import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import kotlinx.android.synthetic.main.activity_register_product.*
 
-class ListListsActivity: AppCompatActivity() {
+class RegisterProductActivity: AppCompatActivity() {
 
-    private lateinit var listsDataList: ArrayList<ListData>
-    private lateinit var listLists: ListView
     lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_lists)
+        setContentView(R.layout.activity_register_product)
 
-        this.listLists = findViewById(R.id.listViewLists)
-        this.listsDataList = ArrayList()
-
-        for (i in 1..20) {
-            val listData: ListData = ListData("Lista de número ${i}", "Mercaso seu Zé")
-            this.listsDataList.add(listData)
-        }
-
-        this.listViewLists.isClickable = true
-        this.listViewLists.adapter = ListItemListAdapter(this, listsDataList)
-        this.listLists.setOnItemClickListener { parent, view, position, id ->
-            val intentProductsInList = Intent(this, RegisterProductInListActivity::class.java)
-            startActivity(intentProductsInList)
-        }
-
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListListsActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutRegisterProductActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -48,7 +34,7 @@ class ListListsActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Lista de Compras")
+        supportActionBar?.setTitle("Cadastro de Produtos")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -84,11 +70,21 @@ class ListListsActivity: AppCompatActivity() {
 
             true
         }
+
+        registerProductAction.setOnClickListener({
+            val nome = inputEmailFormRegisterProduct.text.toString();
+            val preco: Float = inputPriceFormRegisterProduct.text.toString().toFloat();
+
+            if(nome.isEmpty() || preco.isNaN()){
+                Toast.makeText(this, "Por favor insira todos os dados", Toast.LENGTH_SHORT).show();
+            }
+            saveFirestore(nome, preco);
+        })
     }
 
-    fun createNewList (view: View) {
-        val intentNewList = Intent(this, RegisterListActivity::class.java)
-        startActivity(intentNewList)
+    fun registerProduct (view: View) {
+        val intentListProducts = Intent(this, ListProductsActivity::class.java)
+        startActivity(intentListProducts)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -98,4 +94,19 @@ class ListListsActivity: AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    fun saveFirestore(nome: String, preco: Float){
+        val db = FirebaseFirestore.getInstance();
+        val product: MutableMap<String, Any> = HashMap();
+        product["nome"] = nome;
+        product["preco"] = preco;
+
+        db.collection("products")
+            .add(product)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Produto cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Erro ao cadastrar o produto", Toast.LENGTH_SHORT).show();
+            }
+    }
 }
