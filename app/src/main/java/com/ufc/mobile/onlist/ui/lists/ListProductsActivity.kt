@@ -16,6 +16,7 @@ import com.ufc.mobile.onlist.data.ProductData
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.registers.RegisterProductActivity
+import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import kotlinx.android.synthetic.main.activity_list_products.*
 
 class ListProductsActivity: AppCompatActivity() {
@@ -76,6 +77,11 @@ class ListProductsActivity: AppCompatActivity() {
                 R.id.nav_list_shared -> {
                     val intentListsBuy = Intent(this, ListListsActivity::class.java)
                     startActivity(intentListsBuy)
+                }
+
+                R.id.nav_list_edit -> {
+                    val intentUpdatePerfil = Intent(this, UpdateUserActivity::class.java)
+                    startActivity(intentUpdatePerfil)
                 }
 
                 R.id.nav_logout -> {

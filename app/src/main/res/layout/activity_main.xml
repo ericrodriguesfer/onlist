@@ -70,7 +70,7 @@
                 android:drawablePadding="5dp"
                 android:ems="10"
                 android:hint="@string/placeholderInputEmailLoginForm"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/input_text_color"
                 android:padding="15dp" />
 

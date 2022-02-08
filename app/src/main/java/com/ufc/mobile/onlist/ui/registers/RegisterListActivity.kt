@@ -14,6 +14,7 @@ import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.lists.ListListsActivity
 import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
 import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 
 
 class RegisterListActivity: AppCompatActivity() {
@@ -58,6 +59,11 @@ class RegisterListActivity: AppCompatActivity() {
                 R.id.nav_list_shared -> {
                     val intentListsBuy = Intent(this, ListListsActivity::class.java)
                     startActivity(intentListsBuy)
+                }
+
+                R.id.nav_list_edit -> {
+                    val intentUpdatePerfil = Intent(this, UpdateUserActivity::class.java)
+                    startActivity(intentUpdatePerfil)
                 }
 
                 R.id.nav_logout -> {

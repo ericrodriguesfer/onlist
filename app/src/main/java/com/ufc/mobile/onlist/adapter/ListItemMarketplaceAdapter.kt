@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.ufc.mobile.onlist.R
-import com.ufc.mobile.onlist.data.MarketplaceData
+import com.ufc.mobile.onlist.model.Marketplace
 
-class ListItemMarketplaceAdapter (private val context: Activity, private val listMarketplaceData: ArrayList<MarketplaceData>): ArrayAdapter<MarketplaceData>(context, R.layout.list_item_list_marketplaces, listMarketplaceData) {
+class ListItemMarketplaceAdapter (private val context: Activity, private val listMarketplaceData: ArrayList<Marketplace>): ArrayAdapter<Marketplace>(context, R.layout.list_item_list_marketplaces, listMarketplaceData) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater: LayoutInflater = LayoutInflater.from(context)

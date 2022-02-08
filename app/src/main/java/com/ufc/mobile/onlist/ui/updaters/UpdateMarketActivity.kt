@@ -58,6 +58,11 @@ class UpdateMarketActivity: AppCompatActivity() {
                     startActivity(intentListsBuy)
                 }
 
+                R.id.nav_list_edit -> {
+                    val intentUpdatePerfil = Intent(this, UpdateUserActivity::class.java)
+                    startActivity(intentUpdatePerfil)
+                }
+
                 R.id.nav_logout -> {
                     val intentLogin = Intent(this, LoginActivity::class.java)
                     startActivity(intentLogin)

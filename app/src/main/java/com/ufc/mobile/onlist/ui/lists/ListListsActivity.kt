@@ -16,13 +16,14 @@ import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.registers.RegisterListActivity
 import com.ufc.mobile.onlist.ui.registers.RegisterProductInListActivity
+import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import kotlinx.android.synthetic.main.activity_list_lists.*
 
 class ListListsActivity: AppCompatActivity() {
 
     private lateinit var listsDataList: ArrayList<ListData>
     private lateinit var listLists: ListView
-    lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +78,11 @@ class ListListsActivity: AppCompatActivity() {
                 R.id.nav_list_shared -> {
                     val intentListsBuy = Intent(this, ListListsActivity::class.java)
                     startActivity(intentListsBuy)
+                }
+
+                R.id.nav_list_edit -> {
+                    val intentUpdatePerfil = Intent(this, UpdateUserActivity::class.java)
+                    startActivity(intentUpdatePerfil)
                 }
 
                 R.id.nav_logout -> {
