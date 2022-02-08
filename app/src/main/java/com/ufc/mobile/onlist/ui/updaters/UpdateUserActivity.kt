@@ -18,6 +18,7 @@ import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.auth.register.RegisterUserActivity
 import com.ufc.mobile.onlist.ui.lists.ListListsActivity
 import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
+import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
 import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
 import com.ufc.mobile.onlist.util.ToastCustom
 import java.io.FileInputStream
@@ -78,8 +79,8 @@ class UpdateUserActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val productsList = Intent(this, ListProductsActivity::class.java)
-                    startActivity(productsList)
+                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(marketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {

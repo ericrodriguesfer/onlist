@@ -21,6 +21,13 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ui.lists.ListMarketplacesForProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.home.HomeMarketplaceActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.maps.MapActivity"
             android:exported="true" />

@@ -1,49 +1,41 @@
-package com.ufc.mobile.onlist.ui.registers
+package com.ufc.mobile.onlist.ui.home
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import com.benasher44.uuid.uuid4
 import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
-import com.ufc.mobile.onlist.dto.ProductDTO
 import com.ufc.mobile.onlist.model.Marketplace
-import com.ufc.mobile.onlist.services.ProductService
-import com.ufc.mobile.onlist.ui.maps.MapActivity
+import com.ufc.mobile.onlist.model.User
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.lists.ListListsActivity
 import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
 import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
 import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
-import com.ufc.mobile.onlist.util.ToastCustom
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 
-class RegisterProductActivity: AppCompatActivity() {
+class HomeMarketplaceActivity: AppCompatActivity() {
     private var context: Context = this
-    lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var userLoged: User
     private lateinit var marketSelected: Marketplace
-    private lateinit var inputNameProductRegister: EditText
-    private lateinit var inputPriceProductRegister: EditText
-    private lateinit var productService: ProductService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_product)
+        setContentView(R.layout.activity_home_marketplace)
 
+        this.getUserLoged()
         this.getMarketplace()
-        this.productService = ProductService()
-        this.inputNameProductRegister = findViewById(R.id.inputNameFormRegisterProduct)
-        this.inputPriceProductRegister = findViewById(R.id.inputPriceFormRegisterProduct)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutRegisterProductActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutHomeMarketActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -51,7 +43,7 @@ class RegisterProductActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(this.marketSelected.name +  " - Cadastro de Produtos")
+        supportActionBar?.setTitle(this.marketSelected.name + " - Home")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -94,6 +86,26 @@ class RegisterProductActivity: AppCompatActivity() {
         }
     }
 
+    fun clickLinkProductsList (view: View) {
+        var intentListProducts = Intent(this.context as HomeMarketplaceActivity, ListProductsActivity::class.java)
+        startActivity(intentListProducts)
+    }
+    fun clickListListsList (view: View) {
+        var intentListsList = Intent(this.context as HomeMarketplaceActivity, ListListsActivity::class.java)
+        startActivity(intentListsList)
+    }
+
+    private fun getUserLoged() {
+        val fileName = "user_loged"
+        val file = this.getFileStreamPath(fileName)
+        val fileInputStream = FileInputStream(file)
+        val objectInputStream = ObjectInputStream(fileInputStream)
+        this.userLoged = objectInputStream.readObject() as User
+
+        fileInputStream.close()
+        objectInputStream.close()
+    }
+
     private fun getMarketplace() {
         val fileName = "market_selected"
         val file = this.getFileStreamPath(fileName)
@@ -103,28 +115,6 @@ class RegisterProductActivity: AppCompatActivity() {
 
         fileInputStream.close()
         objectInputStream.close()
-    }
-
-    fun registerProduct (view: View) {
-        if (this.inputNameProductRegister.text.isEmpty() || this.inputPriceProductRegister.text.isEmpty()) {
-            val toast = ToastCustom(ToastCustom.WARNING, "Por favor, preencha todos os campos!", this.context as RegisterProductActivity)
-            toast.getToast().show()
-        } else {
-            var createProduct = ProductDTO(uuid4().toString(), this.marketSelected.id.toString(), this.inputNameProductRegister.text.toString(), this.inputPriceProductRegister.text.toString().toDouble())
-
-            this.productService.create(createProduct) { resultSuccessful ->
-                if (resultSuccessful) {
-                    var toast = ToastCustom(ToastCustom.SUCCESS, "Produto cadastrado com sucesso!", this.context as RegisterProductActivity)
-                    toast.getToast().show()
-
-                    val intentListProduct = Intent(this.context as RegisterProductActivity, ListProductsActivity::class.java)
-                    startActivity(intentListProduct)
-                } else {
-                    var toast = ToastCustom(ToastCustom.ERROR, "Erro ao cadastrar o produto!", this.context as RegisterProductActivity)
-                    toast.getToast().show()
-                }
-            }
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

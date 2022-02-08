@@ -4,10 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
@@ -16,39 +15,36 @@ import com.ufc.mobile.onlist.model.User
 import com.ufc.mobile.onlist.services.AuthUserService
 import com.ufc.mobile.onlist.services.MarketplaceService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
-import com.ufc.mobile.onlist.ui.home.HomeMarketplaceActivity
 import com.ufc.mobile.onlist.ui.maps.MapActivity
-import com.ufc.mobile.onlist.ui.registers.RegisterMarketplaceActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_list_marketplaces.*
+import kotlinx.android.synthetic.main.activity_list_marketplaces_for_products.*
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
-class ListMarketplacesActivity: AppCompatActivity() {
+class ListMarketplacesForProductActivity: AppCompatActivity() {
     private var context: Context = this
     private lateinit var marketplaceService: MarketplaceService
-    private lateinit var authUserService: AuthUserService
-    private lateinit var listMarketplaces: ListView
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var userLoged: User
+    private lateinit var listMarketplaces: ListView
+    private lateinit var authUserService: AuthUserService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_marketplaces)
+        setContentView(R.layout.activity_list_marketplaces_for_products)
 
         this.authUserService = AuthUserService()
         this.marketplaceService = MarketplaceService()
 
         this.getUserLoged()
 
-        this.listMarketplaces = findViewById(R.id.listViewMarketplaces)
-
+        this.listMarketplaces = findViewById(R.id.listViewMarketplacesForProduct)
         this.getAllMarketplaces()
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceForProductActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -98,16 +94,11 @@ class ListMarketplacesActivity: AppCompatActivity() {
         }
     }
 
-    fun craateNewMarket (view: View) {
-        val intentNewMarket = Intent(this, RegisterMarketplaceActivity::class.java)
-        startActivity(intentNewMarket)
-    }
-
     private fun getAllMarketplaces() {
         this.marketplaceService.listAllMarketsByIdUser(this.userLoged.id.toString()) { marketList, result ->
             if (result) {
-                this.listViewMarketplaces.isClickable = true
-                this.listViewMarketplaces.adapter = ListItemMarketplaceAdapter(this, marketList)
+                this.listViewMarketplacesForProduct.isClickable = true
+                this.listViewMarketplacesForProduct.adapter = ListItemMarketplaceAdapter(this, marketList)
                 this.listMarketplaces.setOnItemClickListener { parent, view, position, id ->
                     val fileName = "market_selected"
                     val file = context.getFileStreamPath(fileName)
@@ -118,11 +109,11 @@ class ListMarketplacesActivity: AppCompatActivity() {
                     objectOutputStream.close()
                     fileOutputStream.close()
 
-                    val intentHomeMarket = Intent(this, HomeMarketplaceActivity::class.java)
-                    startActivity(intentHomeMarket)
+                    val intentListProducts = Intent(this, ListProductsActivity::class.java)
+                    startActivity(intentListProducts)
                 }
             } else {
-                var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar os mercados!", this.context as ListMarketplacesActivity)
+                var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar os mercados!", this.context as ListMarketplacesForProductActivity)
                 toast.getToast().show()
             }
         }

@@ -14,6 +14,22 @@ class UserService {
     var database = Firebase.firestore
     private val userCollectionReference = Firebase.firestore.collection("users")
 
+    fun listAllUsers(setResultSuccessful: (usersList: ArrayList<User> , result: Boolean) -> Unit) {
+        var usersList: ArrayList<User> = ArrayList()
+
+        this.database.collection("users").get().addOnSuccessListener { users ->
+            for (document in users) {
+                var user = User(document.data["id"] as String, document.data["name"] as String, document.data["email"] as String, document.data["password"] as String, document.data["telephone"] as String, document.data["initials"] as String)
+
+                usersList.add(user)
+            }
+
+            setResultSuccessful(usersList, true)
+        }.addOnFailureListener { error ->
+            setResultSuccessful(usersList, false)
+        }
+    }
+
     fun update(userUpdated: User, context: AppCompatActivity, setResultSuccessful: (setResultSuccessful: Boolean) -> Unit) {
         val mapedUserUpdated = mutableMapOf<String, Any>()
 

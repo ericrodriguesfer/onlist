@@ -1,5 +1,6 @@
 package com.ufc.mobile.onlist.ui.lists
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -13,35 +14,35 @@ import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
 import com.ufc.mobile.onlist.adapter.ListItemProductAdapter
 import com.ufc.mobile.onlist.data.ProductData
+import com.ufc.mobile.onlist.model.Marketplace
+import com.ufc.mobile.onlist.services.ProductService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.registers.RegisterProductActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
+import com.ufc.mobile.onlist.util.ToastCustom
 import kotlinx.android.synthetic.main.activity_list_products.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 
 class ListProductsActivity: AppCompatActivity() {
-
+    private var context: Context = this
     private lateinit var productsDataList: ArrayList<ProductData>
     private lateinit var listProducts: ListView
     lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var marketSelected: Marketplace
+    private lateinit var productService: ProductService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_products)
 
+        this.getMarketplace()
+
+        this.productService = ProductService()
         this.listProducts = findViewById(R.id.listViewProducts)
         this.productsDataList = ArrayList()
-
-        for (i in 1..20) {
-            val productData: ProductData = ProductData("Produto ${i}", (i * 1.0))
-            this.productsDataList.add(productData)
-        }
-
-        this.listViewProducts.isClickable = true
-        this.listViewProducts.adapter = ListItemProductAdapter(this, productsDataList)
-        this.listProducts.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(this, productsDataList.get(position).name, Toast.LENGTH_SHORT).show()
-        }
+        this.getAllProducts()
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListProductsActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -51,7 +52,7 @@ class ListProductsActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Lista de Produtos")
+        supportActionBar?.setTitle(this.marketSelected.name + " - Lista de Produtos")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -70,8 +71,8 @@ class ListProductsActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val productsList = Intent(this, ListProductsActivity::class.java)
-                    startActivity(productsList)
+                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(marketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
@@ -91,6 +92,32 @@ class ListProductsActivity: AppCompatActivity() {
             }
 
             true
+        }
+    }
+
+    private fun getMarketplace() {
+        val fileName = "market_selected"
+        val file = this.getFileStreamPath(fileName)
+        val fileInputStream = FileInputStream(file)
+        val objectInputStream = ObjectInputStream(fileInputStream)
+        this.marketSelected = objectInputStream.readObject() as Marketplace
+
+        fileInputStream.close()
+        objectInputStream.close()
+    }
+
+    private fun getAllProducts() {
+        this.productService.listAllProductByMarket(this.marketSelected.id.toString()) { produtList, result ->
+            if (result) {
+                this.listViewProducts.isClickable = true
+                this.listViewProducts.adapter = ListItemProductAdapter(this.context as ListProductsActivity, produtList)
+                this.listProducts.setOnItemClickListener { parent, view, position, id ->
+                    Toast.makeText(this, productsDataList.get(position).name, Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar os produtos!", this.context as ListProductsActivity)
+                toast.getToast().show()
+            }
         }
     }
 

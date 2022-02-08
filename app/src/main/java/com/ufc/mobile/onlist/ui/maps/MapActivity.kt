@@ -28,8 +28,8 @@ import com.ufc.mobile.onlist.services.MarketplaceService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.lists.ListListsActivity
 import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
+import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
 import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
-import com.ufc.mobile.onlist.ui.registers.RegisterMarketplaceActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import com.ufc.mobile.onlist.util.ToastCustom
 import java.io.FileInputStream
@@ -88,8 +88,8 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 R.id.nav_list_products -> {
-                    val productsList = Intent(this, ListProductsActivity::class.java)
-                    startActivity(productsList)
+                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(marketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
@@ -172,7 +172,7 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                     .title(market.name))
 
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationMarket, 5F))
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationMarket, 15F))
             }
 
             val localizationUser = LatLng(this.localization.latitude, this.localization.longitude)
@@ -182,7 +182,7 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                 .title(this.userLoged.name))
 
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationUser, 5F))
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationUser, 15F))
         }
     }
 

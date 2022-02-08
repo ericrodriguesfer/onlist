@@ -1,5 +1,6 @@
 package com.ufc.mobile.onlist.ui.registers
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,23 +13,30 @@ import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
 import com.ufc.mobile.onlist.adapter.ListItemProductInListAdapter
 import com.ufc.mobile.onlist.data.ProductInListData
+import com.ufc.mobile.onlist.model.Marketplace
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.lists.ListListsActivity
 import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
+import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
 import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import kotlinx.android.synthetic.main.activity_add_product_list.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 
 class RegisterProductInListActivity: AppCompatActivity() {
-
+    private var context: Context = this
     private lateinit var listsProductInListData: ArrayList<ProductInListData>
     private lateinit var listLists: ListView
     lateinit var toggle : ActionBarDrawerToggle
+    private lateinit var marketSelected: Marketplace
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_list)
+
+        this.getMarketplace()
 
         this.listLists = findViewById(R.id.listViewProductsInList)
         this.listsProductInListData = ArrayList()
@@ -68,8 +76,8 @@ class RegisterProductInListActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val productsList = Intent(this, ListProductsActivity::class.java)
-                    startActivity(productsList)
+                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(marketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
@@ -90,6 +98,17 @@ class RegisterProductInListActivity: AppCompatActivity() {
 
             true
         }
+    }
+
+    private fun getMarketplace() {
+        val fileName = "market_selected"
+        val file = this.getFileStreamPath(fileName)
+        val fileInputStream = FileInputStream(file)
+        val objectInputStream = ObjectInputStream(fileInputStream)
+        this.marketSelected = objectInputStream.readObject() as Marketplace
+
+        fileInputStream.close()
+        objectInputStream.close()
     }
 
     fun addProductInList (view: View) {

@@ -53,6 +53,7 @@
                     android:layout_marginTop="35dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/textTitleInputRegisterListNameForm"
+                    android:inputType="textPersonName"
                     android:textColor="@color/black" />
 
                 <EditText
@@ -83,7 +84,7 @@
                     android:text="@string/textTitleInputRegisterListMarketForm"
                     android:textColor="@color/black" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/inputMarketFormRegisterList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -96,8 +97,9 @@
                     android:drawableEnd="@drawable/custom_market_icon"
                     android:drawablePadding="5dp"
                     android:ems="10"
+                    android:enabled="false"
                     android:hint="@string/placeholderInputMarketRegisterListForm"
-                    android:inputType="textPassword"
+                    android:inputType="textPersonName"
                     android:textColor="@color/input_text_color"
                     android:padding="15dp" />
 
@@ -111,7 +113,7 @@
                     android:text="@string/textTitleInputRegisterListViewerForm"
                     android:textColor="@color/black" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/inputViewerFormRegisterList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,7 +127,7 @@
                     android:drawablePadding="5dp"
                     android:ems="10"
                     android:hint="@string/placeholderInputViewerRegisterListForm"
-                    android:inputType="textPassword"
+                    android:inputType="textPersonName"
                     android:textColor="@color/input_text_color"
                     android:padding="15dp" />
 

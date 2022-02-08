@@ -55,7 +55,7 @@
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/inputEmailFormRegisterProduct"
+                    android:id="@+id/inputNameFormRegisterProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -96,7 +96,7 @@
                     android:drawablePadding="5dp"
                     android:ems="10"
                     android:hint="@string/placeholderInputPriceRegisterProductForm"
-                    android:inputType="textPassword"
+                    android:inputType="phone"
                     android:textColor="@color/input_text_color"
                     android:padding="15dp" />
 
