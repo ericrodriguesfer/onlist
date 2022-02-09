@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ListProductsActivity"
-    android:id="@+id/drawerLayoutListListsActivity">
+    tools:context=".ui.lists.ListProductsActivity"
+    android:id="@+id/drawerLayoutListListsActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +32,8 @@
                 app:cardBackgroundColor="@color/green_onlist"
                 app:cardCornerRadius="10dp"
                 android:layout_height="65dp"
-                android:onClick="createNewList" >
+                android:onClick="createNewList"
+                tools:ignore="OnClick">
 
                 <TextView
                     android:text="@string/btn_register_new_list_list"
@@ -41,7 +42,6 @@
                     android:textColor="#FFFF"
                     android:textSize="20dp"
                     android:layout_height="wrap_content">
-                    Cadastrar novo produto
                 </TextView>
             </androidx.cardview.widget.CardView>
 
@@ -58,7 +58,6 @@
         android:layout_gravity="start"
         android:background="@color/green_onlist"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:fitsSystemWindows="true"
-        />
+        android:fitsSystemWindows="true" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

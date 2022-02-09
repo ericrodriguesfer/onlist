@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayoutAddProductOnListActivity"
-    tools:context=".RegisterProductInListActivity"
-    >
+    tools:context=".ui.lists.ListProductsInListActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,6 +40,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewInfoPriceList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -68,6 +68,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/textViewInfoQuantityProducts"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

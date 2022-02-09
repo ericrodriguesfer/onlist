@@ -11,7 +11,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/toast_success"
     android:gravity="center"
-    tools:context=".LoginActivity">
+    tools:context=".ui.auth.login.LoginActivity">
 
     <ImageView
         android:id="@+id/img_toast"

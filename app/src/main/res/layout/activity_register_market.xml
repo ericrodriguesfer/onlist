@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterMarketplaceActivity"
+    tools:context=".ui.registers.RegisterMarketplaceActivity"
     android:id="@+id/drawerLayoutRegisterMarket">
 
    <androidx.constraintlayout.widget.ConstraintLayout
@@ -127,7 +127,7 @@
                    android:drawablePadding="5dp"
                    android:ems="10"
                    android:hint="@string/placeholderInputLatitudeRegisterMarketForm"
-                   android:inputType="textPersonName"
+                   android:inputType="phone"
                    android:textColor="@color/input_text_color"
                    android:padding="15dp" />
 
@@ -155,7 +155,7 @@
                    android:drawablePadding="5dp"
                    android:ems="10"
                    android:hint="@string/placeholderInputLongitudeRegisterMarketForm"
-                   android:inputType="textPersonName"
+                   android:inputType="phone"
                    android:textColor="@color/input_text_color"
                    android:padding="15dp" />
 
@@ -183,7 +183,7 @@
                    android:drawablePadding="5dp"
                    android:ems="10"
                    android:hint="@string/placeholderInputDistrictRegisterMarketForm"
-                   android:inputType="textPassword"
+                   android:inputType="textPersonName"
                    android:textColor="@color/input_text_color"
                    android:padding="15dp" />
 
@@ -211,7 +211,7 @@
                    android:drawablePadding="5dp"
                    android:ems="10"
                    android:hint="@string/placeholderInputRegisterCityForm"
-                   android:inputType="textPassword"
+                   android:inputType="textPersonName"
                    android:textColor="@color/input_text_color"
                    android:padding="15dp" />
 
@@ -260,8 +260,9 @@
                        android:ems="10"
                        android:fontFamily="@font/roboto_regular"
                        android:hint="@string/placeholderInputCEPRegisterMarketForm"
-                       android:inputType="textPassword"
+                       android:inputType="phone"
                        android:padding="15dp"
+                       android:maxLength="8"
                        android:textColor="@color/input_text_color" />
 
                    <EditText
@@ -277,8 +278,9 @@
                        android:ems="10"
                        android:fontFamily="@font/roboto_regular"
                        android:hint="@string/placeholderInputNumberRegisterMarketForm"
-                       android:inputType="textPassword"
+                       android:inputType="phone"
                        android:padding="15dp"
+                       android:maxLength="4"
                        android:textColor="@color/input_text_color" />
                </LinearLayout>
 

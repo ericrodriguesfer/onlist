@@ -35,6 +35,12 @@
         />
 
     <item
+        android:id="@+id/nav_list_edit"
+        android:title="Editar perfil"
+        android:icon="@drawable/icon_edit_focus"
+        />
+
+    <item
         android:id="@+id/nav_logout"
         android:title="Sair"
         android:icon="@drawable/ic_logout"
