@@ -6,15 +6,14 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
 import com.ufc.mobile.onlist.adapter.ListItemProductAdapter
-import com.ufc.mobile.onlist.data.ProductData
 import com.ufc.mobile.onlist.model.Marketplace
+import com.ufc.mobile.onlist.services.AuthUserService
 import com.ufc.mobile.onlist.services.ProductService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.maps.MapActivity
@@ -27,11 +26,11 @@ import java.io.ObjectInputStream
 
 class ListProductsActivity: AppCompatActivity() {
     private var context: Context = this
-    private lateinit var productsDataList: ArrayList<ProductData>
     private lateinit var listProducts: ListView
     lateinit var toggle : ActionBarDrawerToggle
     private lateinit var marketSelected: Marketplace
     private lateinit var productService: ProductService
+    private lateinit var authUserService: AuthUserService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +38,9 @@ class ListProductsActivity: AppCompatActivity() {
 
         this.getMarketplace()
 
+        this.authUserService = AuthUserService()
         this.productService = ProductService()
         this.listProducts = findViewById(R.id.listViewProducts)
-        this.productsDataList = ArrayList()
         this.getAllProducts()
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListProductsActivity)
@@ -61,8 +60,8 @@ class ListProductsActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_buy -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentMarketsListForList = Intent(this, ListMarketplacesForListsActivity::class.java)
+                    startActivity(intentMarketsListForList)
                 }
 
                 R.id.nav_map_markets -> {
@@ -71,13 +70,13 @@ class ListProductsActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
-                    startActivity(marketsListForProducts)
+                    val intentMarketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(intentMarketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentListsViewer = Intent(this, ListListsViewerActivity::class.java)
+                    startActivity(intentListsViewer)
                 }
 
                 R.id.nav_list_edit -> {
@@ -86,8 +85,7 @@ class ListProductsActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_logout -> {
-                    val intentLogin = Intent(this, LoginActivity::class.java)
-                    startActivity(intentLogin)
+                    this.logout()
                 }
             }
 
@@ -111,9 +109,6 @@ class ListProductsActivity: AppCompatActivity() {
             if (result) {
                 this.listViewProducts.isClickable = true
                 this.listViewProducts.adapter = ListItemProductAdapter(this.context as ListProductsActivity, produtList)
-                this.listProducts.setOnItemClickListener { parent, view, position, id ->
-                    Toast.makeText(this, productsDataList.get(position).name, Toast.LENGTH_SHORT).show()
-                }
             } else {
                 var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar os produtos!", this.context as ListProductsActivity)
                 toast.getToast().show()
@@ -131,5 +126,11 @@ class ListProductsActivity: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout() {
+        this.authUserService.logout()
+        val intentLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentLogin)
     }
 }

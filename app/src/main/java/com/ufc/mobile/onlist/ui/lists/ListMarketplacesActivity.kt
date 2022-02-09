@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -65,8 +66,8 @@ class ListMarketplacesActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_buy -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentMarketsListForList = Intent(this, ListMarketplacesForListsActivity::class.java)
+                    startActivity(intentMarketsListForList)
                 }
 
                 R.id.nav_map_markets -> {
@@ -75,13 +76,13 @@ class ListMarketplacesActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
-                    startActivity(marketsListForProducts)
+                    val intentMarketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(intentMarketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentListsViewer = Intent(this, ListListsViewerActivity::class.java)
+                    startActivity(intentListsViewer)
                 }
 
                 R.id.nav_list_edit -> {

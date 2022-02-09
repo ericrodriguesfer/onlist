@@ -100,14 +100,19 @@
         <entry key="app/src/main/res/drawable/toast_success.xml" value="0.37916666666666665" />
         <entry key="app/src/main/res/drawable/toast_warning.xml" value="0.37916666666666665" />
         <entry key="app/src/main/res/font/font.xml" value="0.3" />
-        <entry key="app/src/main/res/layout/activity_add_product_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_add_product_list.xml" value="0.3115942028985507" />
+        <entry key="app/src/main/res/layout/activity_add_products_in_list.xml" value="0.21889696451474988" />
         <entry key="app/src/main/res/layout/activity_home_marketplace.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_list_lists.xml" value="0.27717391304347827" />
+        <entry key="app/src/main/res/layout/activity_list_lists_viewer.xml" value="0.21889696451474988" />
         <entry key="app/src/main/res/layout/activity_list_marketplaces.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_list_marketplaces_for_lists.xml" value="0.21889696451474988" />
         <entry key="app/src/main/res/layout/activity_list_marketplaces_for_products.xml" value="0.181640625" />
         <entry key="app/src/main/res/layout/activity_list_products.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_map.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_product_list_viewer.xml" value="0.21889696451474988" />
+        <entry key="app/src/main/res/layout/activity_products_in_list_viewer.xml" value="0.21889696451474988" />
         <entry key="app/src/main/res/layout/activity_register_list.xml" value="0.2907608695652174" />
         <entry key="app/src/main/res/layout/activity_register_market.xml" value="0.27219202898550726" />
         <entry key="app/src/main/res/layout/activity_register_product.xml" value="0.2907608695652174" />
@@ -120,6 +125,7 @@
         <entry key="app/src/main/res/layout/list_item_list_marketplaces.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_item_list_products.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/layout/list_item_products_in_listview.xml" value="0.27219202898550726" />
+        <entry key="app/src/main/res/layout/list_item_products_in_listview_viewer.xml" value="0.21889696451474988" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.27717391304347827" />
         <entry key="app/src/main/res/menu/nav_menu.xml" value="0.33" />
       </map>

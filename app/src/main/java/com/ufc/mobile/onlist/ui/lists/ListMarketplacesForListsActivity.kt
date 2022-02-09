@@ -24,7 +24,7 @@ import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
-class ListMarketplacesForProductActivity: AppCompatActivity() {
+class ListMarketplacesForListsActivity: AppCompatActivity() {
     private var context: Context = this
     private lateinit var marketplaceService: MarketplaceService
     private lateinit var toggle : ActionBarDrawerToggle
@@ -34,17 +34,17 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_marketplaces_for_products)
+        setContentView(R.layout.activity_list_marketplaces_for_lists)
 
         this.authUserService = AuthUserService()
         this.marketplaceService = MarketplaceService()
 
         this.getUserLoged()
 
-        this.listMarketplaces = findViewById(R.id.listViewMarketplacesForProduct)
+        this.listMarketplaces = findViewById(R.id.listViewMarketplacesForList)
         this.getAllMarketplaces()
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceForProductActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceForListsActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -97,8 +97,8 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
     private fun getAllMarketplaces() {
         this.marketplaceService.listAllMarketsByIdUser(this.userLoged.id.toString()) { marketList, result ->
             if (result) {
-                this.listViewMarketplacesForProduct.isClickable = true
-                this.listViewMarketplacesForProduct.adapter = ListItemMarketplaceAdapter(this, marketList)
+                this.listMarketplaces.isClickable = true
+                this.listMarketplaces.adapter = ListItemMarketplaceAdapter(this, marketList)
                 this.listMarketplaces.setOnItemClickListener { parent, view, position, id ->
                     val fileName = "market_selected"
                     val file = context.getFileStreamPath(fileName)
@@ -109,8 +109,8 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
                     objectOutputStream.close()
                     fileOutputStream.close()
 
-                    val intentListProducts = Intent(this, ListProductsActivity::class.java)
-                    startActivity(intentListProducts)
+                    val intentListLists = Intent(this, ListListsActivity::class.java)
+                    startActivity(intentListLists)
                 }
             } else {
                 var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar os mercados!", this.context as ListMarketplacesForProductActivity)

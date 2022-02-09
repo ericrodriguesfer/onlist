@@ -12,11 +12,9 @@ import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
 import com.ufc.mobile.onlist.model.Marketplace
 import com.ufc.mobile.onlist.model.User
+import com.ufc.mobile.onlist.services.AuthUserService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
-import com.ufc.mobile.onlist.ui.lists.ListListsActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
-import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import com.ufc.mobile.onlist.ui.lists.*
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import java.io.FileInputStream
@@ -27,10 +25,13 @@ class HomeMarketplaceActivity: AppCompatActivity() {
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var userLoged: User
     private lateinit var marketSelected: Marketplace
+    private lateinit var authUserService: AuthUserService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_marketplace)
+
+        this.authUserService = AuthUserService()
 
         this.getUserLoged()
         this.getMarketplace()
@@ -52,8 +53,8 @@ class HomeMarketplaceActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_buy -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentMarketsListForList = Intent(this, ListMarketplacesForListsActivity::class.java)
+                    startActivity(intentMarketsListForList)
                 }
 
                 R.id.nav_map_markets -> {
@@ -62,13 +63,13 @@ class HomeMarketplaceActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
-                    startActivity(marketsListForProducts)
+                    val intentMarketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(intentMarketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentListsViewer = Intent(this, ListListsViewerActivity::class.java)
+                    startActivity(intentListsViewer)
                 }
 
                 R.id.nav_list_edit -> {
@@ -77,8 +78,7 @@ class HomeMarketplaceActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_logout -> {
-                    val intentLogin = Intent(this, LoginActivity::class.java)
-                    startActivity(intentLogin)
+                    this.logout()
                 }
             }
 
@@ -122,5 +122,11 @@ class HomeMarketplaceActivity: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout() {
+        this.authUserService.logout()
+        val intentLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentLogin)
     }
 }

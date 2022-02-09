@@ -12,14 +12,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
 import com.ufc.mobile.onlist.model.User
+import com.ufc.mobile.onlist.services.AuthUserService
 import com.ufc.mobile.onlist.services.UserService
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.auth.register.RegisterUserActivity
-import com.ufc.mobile.onlist.ui.lists.ListListsActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
-import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import com.ufc.mobile.onlist.ui.lists.*
 import com.ufc.mobile.onlist.util.ToastCustom
 import java.io.FileInputStream
 import java.io.ObjectInputStream
@@ -35,11 +33,13 @@ class UpdateUserActivity: AppCompatActivity() {
     private lateinit var inputConfirmPasswordUserUpdate: EditText
     private lateinit var inputTelephoneUserUpdate: EditText
     private lateinit var inputInitialsUserUpdate: EditText
+    private lateinit var authUserService: AuthUserService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_user)
 
+        this.authUserService = AuthUserService()
         this.userService = UserService()
         this.getUserLoged()
 
@@ -69,8 +69,8 @@ class UpdateUserActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_buy -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentMarketsListForList = Intent(this, ListMarketplacesForListsActivity::class.java)
+                    startActivity(intentMarketsListForList)
                 }
 
                 R.id.nav_map_markets -> {
@@ -79,13 +79,13 @@ class UpdateUserActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
-                    startActivity(marketsListForProducts)
+                    val intentMarketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(intentMarketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentListsViewer = Intent(this, ListListsViewerActivity::class.java)
+                    startActivity(intentListsViewer)
                 }
 
                 R.id.nav_list_edit -> {
@@ -94,8 +94,7 @@ class UpdateUserActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_logout -> {
-                    val intentLogin = Intent(this, LoginActivity::class.java)
-                    startActivity(intentLogin)
+                    this.logout()
                 }
             }
 
@@ -155,5 +154,11 @@ class UpdateUserActivity: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout() {
+        this.authUserService.logout()
+        val intentLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentLogin)
     }
 }

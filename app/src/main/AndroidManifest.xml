@@ -23,6 +23,18 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
+            android:name=".ui.lists.ListProductsInListViewerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListListsViewerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListMarketplacesForListsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.registers.RegisterProductInListActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.lists.ListMarketplacesForProductActivity"
             android:exported="true" />
         <activity
@@ -32,7 +44,7 @@
             android:name=".ui.maps.MapActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.registers.RegisterProductInListActivity"
+            android:name=".ui.lists.ListProductsInListActivity"
             android:exported="true" />
         <activity
             android:name=".ui.updaters.UpdateMarketActivity"

@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayoutAddProductOnListActivity"
-    tools:context=".ui.lists.ListProductsInListActivity" >
+    android:id="@+id/drawerLayoutProductOnListViewerActivity"
+    tools:context=".ui.lists.ListProductsInListViewerActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/textViewInfoPriceList"
+                        android:id="@+id/textViewInfoPriceListViewer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -68,7 +68,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/textViewInfoQuantityProducts"
+                        android:id="@+id/textViewInfoQuantityProductsViewer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -82,35 +82,14 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/listViewProductsInList"
+                android:id="@+id/listViewProductsInListViewer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="95dp"
                 android:divider="@null"
                 android:dividerHeight="0dp"
-                tools:listitem="@layout/list_item_products_in_listview"/>
+                tools:listitem="@layout/list_item_products_in_listview_viewer"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_gravity="bottom"
-                android:layout_margin="16dp"
-                app:cardElevation="4dp"
-                android:layout_width="match_parent"
-                android:background="@color/green_onlist"
-                app:cardBackgroundColor="@color/green_onlist"
-                app:cardCornerRadius="10dp"
-                android:layout_height="65dp"
-                android:onClick="addProductInList">
-
-                <TextView
-                    android:text="@string/btn_add_new_product_list"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="#FFFF"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content">
-                    Adicionar produto a lista
-                </TextView>
-            </androidx.cardview.widget.CardView>
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

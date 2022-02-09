@@ -10,41 +10,43 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ufc.mobile.onlist.R
-import com.ufc.mobile.onlist.adapter.ListItemMarketplaceAdapter
+import com.ufc.mobile.onlist.adapter.ListItemListAdapter
+import com.ufc.mobile.onlist.model.Marketplace
 import com.ufc.mobile.onlist.model.User
 import com.ufc.mobile.onlist.services.AuthUserService
-import com.ufc.mobile.onlist.services.MarketplaceService
+import com.ufc.mobile.onlist.services.ListService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import com.ufc.mobile.onlist.util.ToastCustom
-import kotlinx.android.synthetic.main.activity_list_marketplaces_for_products.*
+import kotlinx.android.synthetic.main.activity_list_lists.*
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
-class ListMarketplacesForProductActivity: AppCompatActivity() {
+class ListListsViewerActivity: AppCompatActivity() {
     private var context: Context = this
-    private lateinit var marketplaceService: MarketplaceService
+    private lateinit var listLists: ListView
     private lateinit var toggle : ActionBarDrawerToggle
-    private lateinit var userLoged: User
-    private lateinit var listMarketplaces: ListView
+    private lateinit var marketSelected: Marketplace
+    private lateinit var listService: ListService
     private lateinit var authUserService: AuthUserService
+    private lateinit var userLoged: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_marketplaces_for_products)
+        setContentView(R.layout.activity_list_lists_viewer)
 
+        this.listService = ListService()
         this.authUserService = AuthUserService()
-        this.marketplaceService = MarketplaceService()
+        this.listLists = findViewById(R.id.listViewListsViewer)
 
         this.getUserLoged()
+        this.getMarketplace()
+        this.loadAllLists()
 
-        this.listMarketplaces = findViewById(R.id.listViewMarketplacesForProduct)
-        this.getAllMarketplaces()
-
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListMarketplaceForProductActivity)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayoutListListsViewerActivity)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -52,7 +54,7 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Lista de Mercados")
+        supportActionBar?.setTitle("Listas compartilhadas com você")
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_market -> {
@@ -94,31 +96,6 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
         }
     }
 
-    private fun getAllMarketplaces() {
-        this.marketplaceService.listAllMarketsByIdUser(this.userLoged.id.toString()) { marketList, result ->
-            if (result) {
-                this.listViewMarketplacesForProduct.isClickable = true
-                this.listViewMarketplacesForProduct.adapter = ListItemMarketplaceAdapter(this, marketList)
-                this.listMarketplaces.setOnItemClickListener { parent, view, position, id ->
-                    val fileName = "market_selected"
-                    val file = context.getFileStreamPath(fileName)
-                    val fileOutputStream = FileOutputStream(file)
-                    val objectOutputStream = ObjectOutputStream(fileOutputStream)
-
-                    objectOutputStream.writeObject(marketList.get(position))
-                    objectOutputStream.close()
-                    fileOutputStream.close()
-
-                    val intentListProducts = Intent(this, ListProductsActivity::class.java)
-                    startActivity(intentListProducts)
-                }
-            } else {
-                var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar os mercados!", this.context as ListMarketplacesForProductActivity)
-                toast.getToast().show()
-            }
-        }
-    }
-
     private fun getUserLoged() {
         val fileName = "user_loged"
         val file = this.getFileStreamPath(fileName)
@@ -130,10 +107,40 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
         objectInputStream.close()
     }
 
-    private fun logout() {
-        this.authUserService.logout()
-        val intentLogin = Intent(this, LoginActivity::class.java)
-        startActivity(intentLogin)
+    private fun getMarketplace() {
+        val fileName = "market_selected"
+        val file = this.getFileStreamPath(fileName)
+        val fileInputStream = FileInputStream(file)
+        val objectInputStream = ObjectInputStream(fileInputStream)
+        this.marketSelected = objectInputStream.readObject() as Marketplace
+
+        fileInputStream.close()
+        objectInputStream.close()
+    }
+
+    private fun loadAllLists () {
+        this.listService.listAllListToViewer(this.userLoged.id.toString()) { listsList, result ->
+            if (result) {
+                this.listLists.isClickable = true
+                this.listLists.adapter = ListItemListAdapter(this.context as ListListsViewerActivity, this.marketSelected.name, listsList)
+                this.listLists.setOnItemClickListener { parent, view, position, id ->
+                    val fileName = "selected_list"
+                    val file = this.context.getFileStreamPath(fileName)
+                    val fileOutputStream = FileOutputStream(file)
+                    val objectOutputStream = ObjectOutputStream(fileOutputStream)
+
+                    objectOutputStream.writeObject(listsList.get(position))
+                    objectOutputStream.close()
+                    fileOutputStream.close()
+
+                    val intentProductsInListViewer = Intent(this.context as ListListsViewerActivity, ListProductsInListViewerActivity::class.java)
+                    startActivity(intentProductsInListViewer)
+                }
+            } else {
+                var toast = ToastCustom(ToastCustom.WARNING, "Falha ao carregar as listas!", this.context as ListListsViewerActivity)
+                toast.getToast().show()
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -142,4 +149,11 @@ class ListMarketplacesForProductActivity: AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun logout() {
+        this.authUserService.logout()
+        val intentLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentLogin)
+    }
+
 }

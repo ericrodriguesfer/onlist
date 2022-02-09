@@ -24,12 +24,10 @@ import com.ufc.mobile.onlist.R
 import com.ufc.mobile.onlist.data.LocalizationData
 import com.ufc.mobile.onlist.model.Marketplace
 import com.ufc.mobile.onlist.model.User
+import com.ufc.mobile.onlist.services.AuthUserService
 import com.ufc.mobile.onlist.services.MarketplaceService
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
-import com.ufc.mobile.onlist.ui.lists.ListListsActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
-import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import com.ufc.mobile.onlist.ui.lists.*
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import com.ufc.mobile.onlist.util.ToastCustom
 import java.io.FileInputStream
@@ -44,11 +42,13 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
     private lateinit var userLoged: User
     private lateinit var localization: LocalizationData
     private lateinit var client: FusedLocationProviderClient
+    private lateinit var authUserService: AuthUserService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
 
+        this.authUserService = AuthUserService()
         this.marketplaceService = MarketplaceService()
         this.listMarketplaces = ArrayList()
         this.localization = LocalizationData(-4.979087, -39.056499)
@@ -78,8 +78,8 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 R.id.nav_list_buy -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentMarketsListForList = Intent(this, ListMarketplacesForListsActivity::class.java)
+                    startActivity(intentMarketsListForList)
                 }
 
                 R.id.nav_map_markets -> {
@@ -88,13 +88,13 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 R.id.nav_list_products -> {
-                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
-                    startActivity(marketsListForProducts)
+                    val intentMarketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(intentMarketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentListsViewer = Intent(this, ListListsViewerActivity::class.java)
+                    startActivity(intentListsViewer)
                 }
 
                 R.id.nav_list_edit -> {
@@ -103,8 +103,7 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 R.id.nav_logout -> {
-                    val intentLogin = Intent(this, LoginActivity::class.java)
-                    startActivity(intentLogin)
+                    this.logout()
                 }
             }
 
@@ -172,7 +171,7 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                     .title(market.name))
 
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationMarket, 15F))
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationMarket, 17F))
             }
 
             val localizationUser = LatLng(this.localization.latitude, this.localization.longitude)
@@ -182,7 +181,7 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                 .title(this.userLoged.name))
 
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationUser, 15F))
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizationUser, 17F))
         }
     }
 
@@ -191,5 +190,11 @@ class MapActivity: AppCompatActivity(), OnMapReadyCallback {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout() {
+        this.authUserService.logout()
+        val intentLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentLogin)
     }
 }

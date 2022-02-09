@@ -12,18 +12,18 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
-import com.google.protobuf.LazyStringArrayList
+import com.benasher44.uuid.uuid4
 import com.ufc.mobile.onlist.R
+import com.ufc.mobile.onlist.dto.ListDTO
 import com.ufc.mobile.onlist.model.Marketplace
 import com.ufc.mobile.onlist.model.User
+import com.ufc.mobile.onlist.services.AuthUserService
+import com.ufc.mobile.onlist.services.ListService
 import com.ufc.mobile.onlist.services.MarketplaceService
 import com.ufc.mobile.onlist.services.UserService
 import com.ufc.mobile.onlist.ui.maps.MapActivity
 import com.ufc.mobile.onlist.ui.auth.login.LoginActivity
-import com.ufc.mobile.onlist.ui.lists.ListListsActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesActivity
-import com.ufc.mobile.onlist.ui.lists.ListMarketplacesForProductActivity
-import com.ufc.mobile.onlist.ui.lists.ListProductsActivity
+import com.ufc.mobile.onlist.ui.lists.*
 import com.ufc.mobile.onlist.ui.updaters.UpdateUserActivity
 import com.ufc.mobile.onlist.util.ToastCustom
 import java.io.FileInputStream
@@ -35,26 +35,28 @@ class RegisterListActivity: AppCompatActivity() {
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var marketSelected: Marketplace
     private lateinit var listUsers: ArrayList<User>
-    private lateinit var listMarkets: ArrayList<Marketplace>
     private lateinit var inputNameRegisterList: EditText
     private lateinit var inputMarketRegisterList: AutoCompleteTextView
     private lateinit var inputViewerRegigsterList: AutoCompleteTextView
     private lateinit var marketplaceService: MarketplaceService
     private lateinit var userService: UserService
     private lateinit var userLoged: User
+    private lateinit var listService: ListService
+    private lateinit var authUserService: AuthUserService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_list)
 
+        this.authUserService = AuthUserService()
         this.marketplaceService = MarketplaceService()
         this.userService = UserService()
+        this.listService = ListService()
 
         this.getMarketplace()
         this.getUserLoged()
 
         this.listUsers = ArrayList()
-        this.listMarkets = ArrayList()
 
         this.inputNameRegisterList = findViewById(R.id.inputNameFormRegisterList)
         this.inputMarketRegisterList = findViewById(R.id.inputMarketFormRegisterList)
@@ -80,8 +82,8 @@ class RegisterListActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_buy -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentMarketsListForList = Intent(this, ListMarketplacesForListsActivity::class.java)
+                    startActivity(intentMarketsListForList)
                 }
 
                 R.id.nav_map_markets -> {
@@ -90,13 +92,13 @@ class RegisterListActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_list_products -> {
-                    val marketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
-                    startActivity(marketsListForProducts)
+                    val intentMarketsListForProducts = Intent(this, ListMarketplacesForProductActivity::class.java)
+                    startActivity(intentMarketsListForProducts)
                 }
 
                 R.id.nav_list_shared -> {
-                    val intentListsBuy = Intent(this, ListListsActivity::class.java)
-                    startActivity(intentListsBuy)
+                    val intentListsViewer = Intent(this, ListListsViewerActivity::class.java)
+                    startActivity(intentListsViewer)
                 }
 
                 R.id.nav_list_edit -> {
@@ -105,8 +107,7 @@ class RegisterListActivity: AppCompatActivity() {
                 }
 
                 R.id.nav_logout -> {
-                    val intentLogin = Intent(this, LoginActivity::class.java)
-                    startActivity(intentLogin)
+                    this.logout()
                 }
             }
 
@@ -136,6 +137,7 @@ class RegisterListActivity: AppCompatActivity() {
     private fun loadAllUsers () {
         this.userService.listAllUsers { usersList, result ->
             if (result) {
+                this.listUsers = usersList
                 var listEmailsUsers = Array<String>(usersList.size) { "it = $it" }
 
                 for (i in 0 until usersList.size) {
@@ -181,8 +183,35 @@ class RegisterListActivity: AppCompatActivity() {
     }
 
     fun registerList (view: View) {
-        val intentListsBuy = Intent(this, ListListsActivity::class.java)
-        startActivity(intentListsBuy)
+        if (this.inputNameRegisterList.text.isEmpty()) {
+            val toast = ToastCustom(ToastCustom.WARNING, "Por favor, preencha pelo menos o nome da lista!", this.context as RegisterListActivity)
+            toast.getToast().show()
+        } else {
+            var userViewerId: String? = null
+
+            if (!this.inputViewerRegigsterList.text.isEmpty()) {
+                for (user in this.listUsers) {
+                    if (user.email == this.inputViewerRegigsterList.text.toString()) {
+                        userViewerId = user.id
+                    }
+                }
+            }
+
+            var listCreate = ListDTO(uuid4().toString(), this.marketSelected.id, this.inputNameRegisterList.text.toString(), userViewerId)
+
+            this.listService.create(listCreate) { setResultSuccessful ->
+                if (setResultSuccessful) {
+                    var toast = ToastCustom(ToastCustom.SUCCESS, "Lista cadastrada com sucesso!", this.context as RegisterListActivity)
+                    toast.getToast().show()
+
+                    val intentListLists = Intent(this.context as RegisterListActivity, ListListsActivity::class.java)
+                    startActivity(intentListLists)
+                } else {
+                    var toast = ToastCustom(ToastCustom.ERROR, "Erro ao cadastrar a lista!", this.context as RegisterListActivity)
+                    toast.getToast().show()
+                }
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -190,5 +219,11 @@ class RegisterListActivity: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout() {
+        this.authUserService.logout()
+        val intentLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentLogin)
     }
 }
