@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  database:
+    container_name: 'onlistdatabase'
+    image: 'postgres:13-alpine'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=onlistdatabase
+    volumes:
+      - ./postgres_data/data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    restart: unless-stopped
