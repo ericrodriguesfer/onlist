@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_market"
+        android:title="Lista de mercados"
+        android:icon="@drawable/icon_market_focus"
+        />
+
+    <item
+        android:id="@+id/nav_list_buy"
+        android:title="Lista de compras"
+        android:icon="@drawable/ic_list_focus"
+        />
+
+    <item
+        android:id="@+id/nav_map_markets"
+        android:title="Lista de mapas"
+        android:icon="@drawable/ic_maps_focus"
+        />
+
+    <item
+        android:id="@+id/nav_list_products"
+        android:title="Lista de produtos"
+        android:icon="@drawable/ic_bag_focus"
+        />
+
+    <item
+        android:id="@+id/nav_list_shared"
+        android:title="Listas compartilhadas"
+        android:icon="@drawable/ic_people_share"
+        />
+
+    <item
+        android:id="@+id/nav_list_edit"
+        android:title="Editar perfil"
+        android:icon="@drawable/icon_edit_focus"
+        />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Sair"
+        android:icon="@drawable/ic_logout"
+        />
+
+</menu>

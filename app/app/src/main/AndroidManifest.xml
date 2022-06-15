@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ufc.mobile.onlist">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.OnList">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="************************************" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ui.lists.ListProductsInListViewerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListListsViewerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListMarketplacesForListsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.registers.RegisterProductInListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListMarketplacesForProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.home.HomeMarketplaceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.maps.MapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListProductsInListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.updaters.UpdateMarketActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ui.registers.RegisterMarketplaceActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ui.lists.ListListsActivity"
+            android:exported="true" />
+        <activity android:name=".ui.lists.ListProductsActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".ui.updaters.UpdateUserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.updaters.UpdateProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.registers.RegisterProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.lists.ListMarketplacesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.registers.RegisterListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.auth.register.RegisterUserActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".ui.auth.login.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

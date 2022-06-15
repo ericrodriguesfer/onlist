@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_onlist">#66BB22</color>
+    <color name="green_onlist_2">#66BB22</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#695D5D</color>
+    <color name="input_text_color">#695D5D</color>
+    <color name="color_success_toast">#66BB22</color>
+    <color name="color_warning_toast">#F8D20C</color>
+    <color name="color_error_toast">#F80C0C</color>
+    <color name="color_background_marketplace_item_list">#F0F0F0</color>
+    <color name="color_background_marketplace_icon_item_list">#C4C4C4</color>
+    <color name="color_background_product_item_list">#D9EEC8</color>
+</resources>

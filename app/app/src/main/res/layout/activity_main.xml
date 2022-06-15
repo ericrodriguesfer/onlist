@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.login.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitleLoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="@string/textTitleLoginActivity"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textSubTitleLoginActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/textSubTitleLoginActivity"
+                android:textAlignment="viewStart"
+                android:textColor="@color/gray"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageUserLoginActivityIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/icon_user_login"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/emailLabelFormLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputLoginEmailForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputEmailFormLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_email_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputEmailLoginForm"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/input_text_color"
+                android:padding="15dp" />
+
+            <TextView
+                android:id="@+id/passwordLabelFormLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputLoginPasswordForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputPasswordFormLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_password_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputPasswordLoginForm"
+                android:inputType="textPassword"
+                android:textColor="@color/input_text_color"
+                android:padding="15dp" />
+
+            <Button
+                android:id="@+id/loginAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/textTileButtonLogin"
+                android:textColor="#FFFFFF"
+                android:onClick="clickLogin"/>
+
+            <TextView
+                android:id="@+id/textTitleUserNotRegisteredLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTileLoginActivityInfoUserNotRegistered"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/linkScreenRegisterUserLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleLoginActivityRedirectionUserRegisterScreen"
+                android:textAlignment="center"
+                android:textColor="@color/green_onlist"
+                android:textSize="18dp"
+                android:onClick="clickLinkRegisterUser"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

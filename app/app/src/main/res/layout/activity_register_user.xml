@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textTitleRegisterUserActivity"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="@string/textTitleRegisterUserActivity"
+                android:textAlignment="textStart"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textSubTitleRegisterUserActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textSubTitleRegisterUserActivity"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="viewStart"
+                android:textColor="@color/gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/nameLabelFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputRegisterNameForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputNameFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custom_people_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputNameRegisterUserForm"
+                android:inputType="textPersonName"
+                android:textColor="@color/input_text_color"
+                android:padding="15dp" />
+
+            <TextView
+                android:id="@+id/emailLabelFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputLoginEmailForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputEmailFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_email_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputEmailRegisterUserForm"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/input_text_color"
+                android:padding="15dp" />
+
+            <TextView
+                android:id="@+id/passwordLabelFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputRegisterPasswordForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputPasswordFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_password_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputPasswordRegisterUserForm"
+                android:inputType="textPassword"
+                android:textColor="@color/input_text_color"
+                android:padding="15dp" />
+
+            <TextView
+                android:id="@+id/confirmPasswordLabelFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleInputRegisterPasswordConfirmForm"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/inputConfirmPasswordFormRegisterUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/custom_input_form"
+                android:drawableEnd="@drawable/custon_password_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="@string/placeholderInputPasswordRegisterConfirmUserForm"
+                android:inputType="textPassword"
+                android:textColor="@color/input_text_color"
+                android:padding="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/telephoneLabelFormRegisterUser"
+                    android:layout_width="208dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/textTitleInputRegisterTelephoneForm"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/initialsLabelFormRegisterUser"
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/textTitleInputRegisterInitialForm"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/inputTelephoneFormRegisterUser"
+                    android:layout_width="228dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_input_form"
+                    android:drawableEnd="@drawable/custon_icon_phone"
+                    android:drawablePadding="5dp"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/placeholderInputPhoneRegisterUserForm"
+                    android:inputType="phone"
+                    android:padding="15dp"
+                    android:maxLength="11"
+                    android:textColor="@color/input_text_color" />
+
+                <EditText
+                    android:id="@+id/inputInitialsFormRegisterUser"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_input_form"
+                    android:drawableEnd="@drawable/custon_icon_initials"
+                    android:drawablePadding="5dp"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/placeholderInputInitalsRegisterUserForm"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:maxLength="2"
+                    android:textColor="@color/input_text_color" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/registerUserAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/textTileButtonRegisterUser"
+                android:textColor="#FFFFFF"
+                android:onClick="clickRegister"/>
+
+            <TextView
+                android:id="@+id/textTitleUserRegisteredLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTileRegisterUserActivityInfoUserRegistered"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/linkScreenLoginUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/textTitleRegisterUserActivityRedirectionUserLoginScreen"
+                android:textAlignment="center"
+                android:textColor="@color/green_onlist"
+                android:textSize="18dp"
+                android:onClick="clickLinkLoginUser"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

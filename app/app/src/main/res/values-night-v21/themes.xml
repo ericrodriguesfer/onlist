@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.OnList" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="statusBarBackground">@color/white</item>
+        <item name="colorPrimary">@color/green_onlist</item>
+        <item name="colorPrimaryDark">@color/green_onlist_2</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
